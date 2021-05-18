@@ -2,4 +2,8 @@
     <string name="app_name">IoasysDiversidade</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="password">Senha</string>
+    <string name="join">Entrar</string>
+    <string name="register_here">Ainda não tem uma conta? Cadastre-se <b><font color="#000000" >aqui</font></b></string>
 </resources>

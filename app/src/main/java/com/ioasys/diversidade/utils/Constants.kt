@@ -3,7 +3,7 @@ package com.ioasys.diversidade.utils
 class Constants {
 
     companion object {
-        const val BASE_URL = "http://localhost:3000"
+        const val BASE_URL = "https://apicamp.herokuapp.com/api/v1/"
     }
 
 }

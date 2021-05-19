@@ -2,7 +2,6 @@ package com.ioasys.diversidade.di
 
 import com.ioasys.diversidade.data.network.MyApi
 import com.ioasys.diversidade.utils.Constants
-import com.ioasys.diversidade.utils.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,7 +38,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(Constants.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()

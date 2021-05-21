@@ -28,6 +28,8 @@ class HomeFragment : Fragment() {
 
         Log.i("Home Args", "${args.token.toString()} - ${args.userId.toString()} - ${args.userName.toString()}")
 
+        binding.homeHelloMessage.text = "Olá, ${args.userName}!"
+
         binding.buttonTest.setOnClickListener {
             findNavController().setGraph(R.navigation.auth_graph)
         }

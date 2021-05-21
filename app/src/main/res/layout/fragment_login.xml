@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="user"
+            type="com.ioasys.diversidade.viewmodels.AuthViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,6 +14,7 @@
         android:layout_height="match_parent">
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +27,7 @@
                 android:paddingHorizontal="24dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/login_logo"
+                    android:id="@+id/register_logo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="70dp"
@@ -41,15 +45,14 @@
                     android:textAlignment="center"
                     android:textColor="@color/charcoal"
                     android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="@+id/login_logo"
-                    app:layout_constraintStart_toStartOf="@+id/login_logo"
-                    app:layout_constraintTop_toBottomOf="@+id/login_logo" />
+                    app:layout_constraintEnd_toEndOf="@+id/register_logo"
+                    app:layout_constraintStart_toStartOf="@+id/register_logo"
+                    app:layout_constraintTop_toBottomOf="@+id/register_logo" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/login_email_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
                     android:layout_marginTop="80dp"
                     android:text="@string/email"
                     android:textColor="@color/charcoal"
@@ -57,19 +60,26 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/login_register_text" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_email_inputLayout"
                     android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_marginHorizontal="24dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/custom_edit_text_bg"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:paddingHorizontal="9dp"
+                    app:boxBackgroundMode="outline"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/login_email_label" />
+                    app:layout_constraintTop_toBottomOf="@+id/login_email_label">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/login_email_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:background="@drawable/custom_edit_text_bg"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:padding="9dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/login_password_label"
@@ -82,25 +92,31 @@
                     app:layout_constraintStart_toStartOf="@+id/login_email_inputLayout"
                     app:layout_constraintTop_toBottomOf="@+id/login_email_inputLayout" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_password_inputLayout"
                     android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_marginHorizontal="24dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/custom_edit_text_bg"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:paddingHorizontal="9dp"
+                    app:boxBackgroundMode="outline"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/login_password_label" />
+                    app:layout_constraintTop_toBottomOf="@+id/login_password_label">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/login_password_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:background="@drawable/custom_edit_text_bg"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:padding="9dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/login_submit_button"
                     android:layout_width="0dp"
                     android:layout_height="55dp"
-                    android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="50dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/rounded_bg"
@@ -114,8 +130,28 @@
                     app:layout_constraintTop_toBottomOf="@+id/login_password_inputLayout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </ScrollView>
+
+        <ImageView
+            android:id="@+id/loading_effect"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#99000000"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/loading_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

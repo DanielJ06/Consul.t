@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="24dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/register_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/gradient_logo" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="72dp"
+                    android:text="Estamos quase lá!"
+                    android:textColor="@color/charcoal"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/register_logo" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/we_need_some_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Precisamos de algumas informações para criar sua conta"
+                    android:textColor="@color/charcoal"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@+id/appCompatTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity=""
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/we_need_some_info">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/register_first_and_last_name_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:text="Nome e sobrenome"
+                        android:textColor="@color/charcoal"
+                        android:textSize="24sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/register_first_and_last_name_editText"
+                        style="@style/CustomInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/register_phone_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:text="Telefone"
+                        android:textColor="@color/charcoal"
+                        android:textSize="24sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/register_phone_editText"
+                        style="@style/CustomInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/register_email_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:text="@string/email"
+                        android:textColor="@color/charcoal"
+                        android:textSize="24sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/register_email_editText"
+                        style="@style/CustomInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/register_password_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:text="Senha"
+                        android:textColor="@color/charcoal"
+                        android:textSize="24sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/register_password_editText"
+                        style="@style/CustomInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/register_cofirm_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:text="Confirme sua senha"
+                        android:textColor="@color/charcoal"
+                        android:textSize="24sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/register_confirm_editText"
+                        style="@style/CustomInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/login_submit_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/rounded_bg"
+                        android:text="Cadastrar"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/login_password_inputLayout" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

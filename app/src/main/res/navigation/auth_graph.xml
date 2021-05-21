@@ -9,5 +9,34 @@
         android:id="@+id/loginFragment"
         android:name="com.ioasys.diversidade.ui.fragments.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_my_nav"
+            app:destination="@id/my_nav">
+
+            <argument
+                android:name="userId"
+                app:argType="string"
+                app:nullable="true" />
+
+            <argument
+                android:name="userName"
+                app:argType="string"
+                app:nullable="true" />
+
+            <argument
+                android:name="token"
+                app:argType="string"
+                app:nullable="true" />
+
+        </action>
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <include app:graph="@navigation/my_nav" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.ioasys.diversidade.ui.fragments.RegisterFragment"
+        android:label="RegisterFragment" />
 </navigation>

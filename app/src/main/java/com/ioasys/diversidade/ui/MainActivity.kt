@@ -20,11 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navHostFragment: NavHostFragment = supportFragmentManager
-            .findFragmentById(R.id.navHostFragment) as NavHostFragment
-
-        navHostFragment.findNavController().setGraph(R.navigation.auth_graph)
-
         navController = findNavController(R.id.navHostFragment)
     }
 

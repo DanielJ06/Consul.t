@@ -25,6 +25,13 @@
             android:name="token"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_professionalFragment"
+            app:destination="@id/professionalFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/professionalFragment"
+        android:name="com.ioasys.diversidade.ui.fragments.ProfessionalFragment"
+        android:label="ProfessionalFragment" />
 </navigation>

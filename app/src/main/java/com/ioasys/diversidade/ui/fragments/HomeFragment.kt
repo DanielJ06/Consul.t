@@ -34,6 +34,11 @@ class HomeFragment : Fragment() {
             findNavController().setGraph(R.navigation.auth_graph)
         }
 
+        binding.homeOurProfessionals.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToProfessionalFragment()
+            findNavController().navigate(action)
+        }
+
         return binding.root
     }
 

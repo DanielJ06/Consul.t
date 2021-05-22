@@ -34,7 +34,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/gradient_logo" />
+                    app:srcCompat="@drawable/ic_logo" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/login_register_text"

@@ -7,4 +7,6 @@
     <string name="join">Entrar</string>
     <string name="register_here">Ainda não tem uma conta? Cadastre-se <b><font color="#000000" >aqui</font></b></string>
     <string name="filters">Filtros</string>
+    <string name="account_success">Sua conta foi criada com sucesso!</string>
+    <string name="join_now">Acessar agora</string>
 </resources>

@@ -10,7 +10,14 @@
 
     <color name="charcoal">#555555</color>
     <color name="purple">#A864FF</color>
+    <color name="darker_purple">#8D33FF</color>
     <color name="blue">#6C8DFF</color>
     <color name="orange">#ED7E3F</color>
     <color name="yellow">#EDC73F</color>
+    
+    <!-- Gradient colors -->
+    <color name="light_orange">#E37D7D</color>
+    <color name="light_pink">#AE76AB</color>
+    <color name="light_blue">#A6C8F3</color>
+    
 </resources>

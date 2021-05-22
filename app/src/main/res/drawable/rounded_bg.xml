@@ -10,7 +10,11 @@
 
     <item android:id="@android:id/background">
         <shape android:shape="rectangle">
-            <solid android:color="@color/purple" />
+            <gradient
+                android:angle="-225"
+                android:endColor="@color/light_orange"
+                android:centerColor="@color/light_pink"
+                android:startColor="#9EB3FF" />
             <corners android:radius="16dp" />
         </shape>
     </item>

@@ -40,5 +40,21 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.ioasys.diversidade.ui.fragments.RegisterFragment"
-        android:label="RegisterFragment" />
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_successAuthFragment"
+            app:destination="@id/successAuthFragment"
+            app:enterAnim="@anim/slide_in_top"
+            app:exitAnim="@anim/slide_out_bottom"
+            app:popEnterAnim="@anim/slide_in_bottom"
+            app:popExitAnim="@anim/slide_out_top"
+            app:popUpTo="@id/registerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/successAuthFragment"
+        tools:layout="@layout/fragment_success_auth"
+        android:name="com.ioasys.diversidade.ui.fragments.SuccessAuthFragment"
+        android:label="SuccessAuthFragment" />
 </navigation>

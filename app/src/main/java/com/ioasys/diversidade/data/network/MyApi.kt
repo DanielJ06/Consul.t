@@ -9,7 +9,7 @@ import retrofit2.http.*
 
 interface MyApi {
 
-    @GET("users")
+    @GET("professionals")
     suspend fun loadProfessionals(
         @Header("Authorization") token: String
     ): Response<ProfessionalsList>

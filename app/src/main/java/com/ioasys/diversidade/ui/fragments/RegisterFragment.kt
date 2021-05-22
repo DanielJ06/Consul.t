@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.ioasys.diversidade.databinding.FragmentRegisterBinding
 import com.ioasys.diversidade.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,6 +31,12 @@ class RegisterFragment : Fragment() {
     ): View? {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
+
+        binding.registerSubmitButton.setOnClickListener {
+            val action = RegisterFragmentDirections.actionRegisterFragmentToSuccessAuthFragment()
+            findNavController().navigate(action)
+        }
+
         return binding.root
     }
 

@@ -1,11 +1,13 @@
 package com.ioasys.diversidade.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -42,6 +44,7 @@ class LoginFragment : Fragment() {
         }
 
         binding.loginSubmitButton.setOnClickListener {
+            hideKeyboard()
             val emailContent = binding.loginEmailEditText.text?.toString()
             val passwdContent = binding.loginPasswordEditText.text?.toString()
             if (emailContent.isNullOrEmpty() || passwdContent.isNullOrEmpty()) {
@@ -62,10 +65,9 @@ class LoginFragment : Fragment() {
                     binding.loadingEffect.visibility = View.INVISIBLE
                     binding.loginEmailInputLayout.error = null
                     binding.loginPasswordInputLayout.error = null
-                    Toast.makeText(requireContext(), "Sucesso", Toast.LENGTH_SHORT).show()
 
                     val id = res.data?.user?.id
-                    val name = res.data?.user?.name
+                    val name = res.data?.user?.firstName
                     val token = res.data?.token
 
                     val action = LoginFragmentDirections.actionLoginFragmentToMyNav(id, name, token)
@@ -86,6 +88,13 @@ class LoginFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    private fun hideKeyboard() {
+        val imm: InputMethodManager =
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        imm.hideSoftInputFromWindow(view?.windowToken, 0)
     }
 
     private fun setupInputs() {

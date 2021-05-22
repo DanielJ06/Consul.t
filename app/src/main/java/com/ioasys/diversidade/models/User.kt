@@ -7,7 +7,8 @@ data class User (
 
 data class UserData (
     val id: String,
-    val name: String,
+    val firstName: String,
+    val lastName: String,
     val email: String,
     val isAdmin: Boolean,
     val isDeleted: Boolean,

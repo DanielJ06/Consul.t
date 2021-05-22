@@ -26,8 +26,6 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        Log.i("Home Args", "${args.token.toString()} - ${args.userId.toString()} - ${args.userName.toString()}")
-
         binding.homeHelloMessage.text = "Olá, ${args.userName}!"
 
         binding.buttonTest.setOnClickListener {
@@ -35,7 +33,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.homeOurProfessionals.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToProfessionalFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToProfessionalFragment(args.token)
             findNavController().navigate(action)
         }
 

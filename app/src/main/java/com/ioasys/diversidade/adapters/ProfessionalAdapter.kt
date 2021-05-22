@@ -45,6 +45,7 @@ class ProfessionalAdapter: RecyclerView.Adapter<ProfessionalAdapter.Professional
 
     fun setData(data: List<Professional>) {
         professionals = data
+        notifyDataSetChanged()
     }
 
 }

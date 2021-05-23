@@ -65,20 +65,60 @@
                     app:layout_constraintTop_toBottomOf="@+id/we_need_some_info">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/register_first_and_last_name_label"
+                        android:id="@+id/register_name_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
-                        android:text="Nome e sobrenome"
+                        android:text="Nome"
                         android:textColor="@color/charcoal"
                         android:textSize="24sp" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/register_first_and_last_name_editText"
-                        style="@style/CustomInput"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/register_first_name_inputLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:boxBackgroundMode="outline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/login_email_label">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_first_name_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:background="@drawable/custom_edit_text_bg"
+                            android:maxLines="1"
+                            android:padding="9dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/register_last_name_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:text="Sobrenome"
+                        android:textColor="@color/charcoal"
+                        android:textSize="24sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/register_last_name_inputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:boxBackgroundMode="outline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/login_email_label">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_last_name_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:background="@drawable/custom_edit_text_bg"
+                            android:maxLines="1"
+                            android:padding="9dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/register_phone_label"
@@ -89,28 +129,54 @@
                         android:textColor="@color/charcoal"
                         android:textSize="24sp" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/register_phone_editText"
-                        style="@style/CustomInput"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/register_phone_inputLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:boxBackgroundMode="outline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/login_email_label">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_phone_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:background="@drawable/custom_edit_text_bg"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:padding="9dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/register_email_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
-                        android:text="@string/email"
+                        android:text="Email"
                         android:textColor="@color/charcoal"
                         android:textSize="24sp" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/register_email_editText"
-                        style="@style/CustomInput"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/register_email_inputLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:boxBackgroundMode="outline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/login_email_label">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_email_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:background="@drawable/custom_edit_text_bg"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:padding="9dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/register_password_label"
@@ -121,28 +187,54 @@
                         android:textColor="@color/charcoal"
                         android:textSize="24sp" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/register_password_editText"
-                        style="@style/CustomInput"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/register_password_inputLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:boxBackgroundMode="outline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/login_email_label">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_password_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:background="@drawable/custom_edit_text_bg"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:padding="9dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/register_cofirm_label"
+                        android:id="@+id/register_confirm_password_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
-                        android:text="Confirme sua senha"
+                        android:text="Confirmar senha"
                         android:textColor="@color/charcoal"
                         android:textSize="24sp" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/register_confirm_editText"
-                        style="@style/CustomInput"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/register_confirm_password_inputLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:boxBackgroundMode="outline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/login_email_label">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_confirm_password_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:background="@drawable/custom_edit_text_bg"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:padding="9dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/register_submit_button"

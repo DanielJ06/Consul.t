@@ -29,6 +29,10 @@ class AuthViewModel @Inject constructor(
             dataStoreRepository.saveUserInfo(userId, userName, accessToken)
     }
 
+    fun logout() = viewModelScope.launch(Dispatchers.IO) {
+        dataStoreRepository.logout()
+    }
+
     // Retrofit
 
     val userData: MutableLiveData<NetworkResult<User>> = MutableLiveData()

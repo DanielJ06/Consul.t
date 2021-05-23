@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ioasys.diversidade.R
 import com.ioasys.diversidade.databinding.FragmentHomeBinding
+import com.ioasys.diversidade.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +22,13 @@ class HomeFragment : Fragment() {
 
     private val args: HomeFragmentArgs by navArgs()
 
+    private lateinit var authViewModel: AuthViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        authViewModel = ViewModelProvider(requireActivity()).get(AuthViewModel::class.java)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,6 +38,7 @@ class HomeFragment : Fragment() {
         binding.homeHelloMessage.text = "Olá, ${args.userName}!"
 
         binding.buttonTest.setOnClickListener {
+            authViewModel.logout()
             findNavController().setGraph(R.navigation.auth_graph)
         }
 

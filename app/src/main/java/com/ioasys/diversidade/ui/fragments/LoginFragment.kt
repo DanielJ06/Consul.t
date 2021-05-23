@@ -83,7 +83,7 @@ class LoginFragment : Fragment() {
                     val name = res.data?.user?.firstName
                     val token = res.data?.token
 
-                    authViewModel.saveUserInfo(token!!, id!!, name!!)
+                    authViewModel.saveUserInfo(id!!, name!!, token!!)
 
                     val action = LoginFragmentDirections.actionLoginFragmentToMyNav(id, name, token)
                     findNavController().navigate(action)

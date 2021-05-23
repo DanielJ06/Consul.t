@@ -4,18 +4,32 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ioasys.diversidade.data.DataStoreRepository
 import com.ioasys.diversidade.data.Repository
 import com.ioasys.diversidade.models.User
 import com.ioasys.diversidade.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.Dispatcher
 import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
+    private val dataStoreRepository: DataStoreRepository,
     private val repository: Repository
 ): ViewModel() {
+
+    // DataStore
+    val readUserInfo = dataStoreRepository.readUserInfo
+
+    fun saveUserInfo(userId: String, userName: String, accessToken: String) =
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreRepository.saveUserInfo(userId, userName, accessToken)
+    }
+
+    // Retrofit
 
     val userData: MutableLiveData<NetworkResult<User>> = MutableLiveData()
 

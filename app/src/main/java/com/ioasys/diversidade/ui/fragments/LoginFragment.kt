@@ -11,9 +11,11 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.ioasys.diversidade.R
 import com.ioasys.diversidade.databinding.FragmentLoginBinding
+import com.ioasys.diversidade.models.DataStoreUser
 import com.ioasys.diversidade.utils.NetworkResult
 import com.ioasys.diversidade.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,6 +39,17 @@ class LoginFragment : Fragment() {
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
+
+        authViewModel.readUserInfo.asLiveData().observe(viewLifecycleOwner, { value: DataStoreUser ->
+            if (value.accessToken.isNotEmpty() && value.userId.isNotEmpty()) {
+                val userId = value.userId
+                val userName = value.userName
+                val accessToken = value.accessToken
+
+                val action = LoginFragmentDirections.actionLoginFragmentToMyNav(userId, userName, accessToken)
+                findNavController().navigate(action)
+            }
+        })
 
         binding.loginRegisterText.setOnClickListener {
             val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
@@ -69,6 +82,8 @@ class LoginFragment : Fragment() {
                     val id = res.data?.user?.id
                     val name = res.data?.user?.firstName
                     val token = res.data?.token
+
+                    authViewModel.saveUserInfo(token!!, id!!, name!!)
 
                     val action = LoginFragmentDirections.actionLoginFragmentToMyNav(id, name, token)
                     findNavController().navigate(action)

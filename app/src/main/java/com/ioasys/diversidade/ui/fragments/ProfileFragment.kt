@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ioasys.diversidade.databinding.FragmentProfileBinding
 import com.ioasys.diversidade.utils.NetworkResult
@@ -33,6 +34,14 @@ class ProfileFragment : Fragment() {
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
+
+        binding.arrowLeft.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.goBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
         requestDetails(args.userId.toString(), args.token.toString())
         Log.i("debug", args.userId.toString())

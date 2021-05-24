@@ -13,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.ioasys.diversidade.databinding.FragmentRegisterBinding
+import com.ioasys.diversidade.models.RegisterCredentials
+import com.ioasys.diversidade.utils.NetworkResult
 import com.ioasys.diversidade.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -69,12 +71,33 @@ class RegisterFragment : Fragment() {
             validate()
 
             if (validation != 0) {
-                val action = RegisterFragmentDirections.actionRegisterFragmentToSuccessAuthFragment()
-                findNavController().navigate(action)
+                signUp()
             }
         }
 
+        authViewModel.registerData.observe(viewLifecycleOwner, {res ->
+            when (res) {
+                is NetworkResult.Success -> {
+                    val action = RegisterFragmentDirections.actionRegisterFragmentToSuccessAuthFragment()
+                    findNavController().navigate(action)
+                }
+                is NetworkResult.Error -> {
+                    Toast.makeText(requireContext(), res.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+
         return binding.root
+    }
+
+    private fun signUp() {
+        val email = emailET.text.toString()
+        val password = passwordET.text.toString()
+        val firstName = firstNameET.text.toString()
+        val lastName = lastNameET.text.toString()
+        val telephone = phoneET.text.toString()
+
+        authViewModel.signUp(email, password, firstName, lastName, telephone)
     }
 
     private fun validate() {

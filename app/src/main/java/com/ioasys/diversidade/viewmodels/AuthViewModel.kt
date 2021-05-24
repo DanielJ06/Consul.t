@@ -36,6 +36,7 @@ class AuthViewModel @Inject constructor(
     // Retrofit
 
     val userData: MutableLiveData<NetworkResult<User>> = MutableLiveData()
+    val registerData: MutableLiveData<NetworkResult<User>> = MutableLiveData()
 
     fun signIn(email: String, password: String) = viewModelScope.launch {
         try {
@@ -43,6 +44,38 @@ class AuthViewModel @Inject constructor(
             userData.value = handleSignIn(response)
         } catch (e: Exception) {
             Log.i("responseError", e.toString())
+        }
+    }
+
+    fun signUp(
+        email: String,
+        password: String,
+        firstName: String,
+        lastName: String,
+        telephone: String
+    ) = viewModelScope.launch {
+        try {
+            val response = repository.remote.signUp(email, password, firstName, lastName, telephone)
+            registerData.value = handleSignUp(response)
+        } catch (e: Exception) {
+            Log.i("responseError", e.toString())
+        }
+    }
+
+    private fun handleSignUp(response: Response<User>): NetworkResult<User> {
+        userData.value = NetworkResult.Loading()
+        return when {
+            response.isSuccessful -> {
+                val data = response.body()
+                NetworkResult.Success(data!!)
+            }
+            response.code() == 409 -> {
+                NetworkResult.Error("Email já registrado")
+            }
+            else -> {
+                Log.i("userDebug", response.toString())
+                NetworkResult.Error("Something went wrong.")
+            }
         }
     }
 

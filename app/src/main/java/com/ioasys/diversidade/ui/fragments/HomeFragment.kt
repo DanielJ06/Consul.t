@@ -38,8 +38,10 @@ class HomeFragment : Fragment() {
         binding.homeHelloMessage.text = "Olá, ${args.userName}!"
 
         binding.buttonTest.setOnClickListener {
-            authViewModel.logout()
-            findNavController().setGraph(R.navigation.auth_graph)
+//            authViewModel.logout()
+//            findNavController().setGraph(R.navigation.auth_graph)
+            val action = HomeFragmentDirections.actionHomeFragmentToProfileFragment(args.token, args.userId)
+            findNavController().navigate(action)
         }
 
         binding.homeOurProfessionals.setOnClickListener {

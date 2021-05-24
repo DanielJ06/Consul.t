@@ -9,4 +9,6 @@
     <string name="filters">Filtros</string>
     <string name="account_success">Sua conta foi criada com sucesso!</string>
     <string name="join_now">Acessar agora</string>
+    <string name="go_back">Voltar</string>
+    <string name="your_profile">Seu perfil</string>
 </resources>

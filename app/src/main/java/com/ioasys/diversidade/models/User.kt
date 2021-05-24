@@ -10,6 +10,7 @@ data class UserData (
     val firstName: String,
     val lastName: String,
     val email: String,
+    val telephone: String,
     val isAdmin: Boolean,
     val isDeleted: Boolean,
 )

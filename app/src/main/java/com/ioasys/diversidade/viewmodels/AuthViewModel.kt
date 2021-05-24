@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.ioasys.diversidade.data.DataStoreRepository
 import com.ioasys.diversidade.data.Repository
 import com.ioasys.diversidade.models.User
+import com.ioasys.diversidade.models.UserData
 import com.ioasys.diversidade.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -37,6 +38,17 @@ class AuthViewModel @Inject constructor(
 
     val userData: MutableLiveData<NetworkResult<User>> = MutableLiveData()
     val registerData: MutableLiveData<NetworkResult<User>> = MutableLiveData()
+    val profile: MutableLiveData<NetworkResult<UserData>> = MutableLiveData()
+
+    fun getDetailsAccount(userId: String, token: String) = viewModelScope.launch {
+        try {
+            val response = repository.remote.getAccountDetails(userId, token)
+            Log.i("DEBUG", response.body().toString())
+            profile.value = handleAccount(response)
+        } catch (e: Exception) {
+            Log.i("responseError", e.toString())
+        }
+    }
 
     fun signIn(email: String, password: String) = viewModelScope.launch {
         try {
@@ -59,6 +71,23 @@ class AuthViewModel @Inject constructor(
             registerData.value = handleSignUp(response)
         } catch (e: Exception) {
             Log.i("responseError", e.toString())
+        }
+    }
+
+    private fun handleAccount(response: Response<UserData>): NetworkResult<UserData> {
+        profile.value = NetworkResult.Loading()
+        return when {
+            response.isSuccessful -> {
+                val data = response.body()
+                NetworkResult.Success(data!!)
+            }
+            response.code() == 401 -> {
+                NetworkResult.Error("Ocorreu um erro")
+            }
+            else -> {
+                Log.i("userDebug", response.toString())
+                NetworkResult.Error("Something went wrong.")
+            }
         }
     }
 

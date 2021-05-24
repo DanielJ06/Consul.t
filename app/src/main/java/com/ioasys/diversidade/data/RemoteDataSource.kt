@@ -11,7 +11,11 @@ class RemoteDataSource @Inject constructor(
 ) {
 
     suspend fun loadProfessionals(token: String): Response<ProfessionalsList> {
-        return myApi.loadProfessionals("bearer $token")
+        return myApi.loadProfessionals("Bearer $token")
+    }
+
+    suspend fun getAccountDetails(userId: String, token: String): Response<UserData> {
+        return myApi.getAccountDetails(userId, "Bearer $token")
     }
 
     suspend fun signIn(email: String, password: String): Response<User> {

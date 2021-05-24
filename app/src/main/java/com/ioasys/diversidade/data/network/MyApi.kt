@@ -11,6 +11,12 @@ interface MyApi {
         @Header("Authorization") token: String
     ): Response<ProfessionalsList>
 
+    @GET("users/{id}")
+    suspend fun getAccountDetails(
+        @Path("id") id: String,
+        @Header("Authorization") token: String
+    ): Response<UserData>
+
     @POST("auth/signin")
     suspend fun signIn(
         @Body userCredentials: UserCredentials

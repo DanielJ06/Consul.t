@@ -43,9 +43,12 @@ class HomeFragment : Fragment() {
         }
 
         binding.buttonTest.setOnClickListener {
-//            authViewModel.logout()
-//            findNavController().setGraph(R.navigation.auth_graph)
             val action = HomeFragmentDirections.actionHomeFragmentToProfileFragment(args.token, args.userId)
+            findNavController().navigate(action)
+        }
+
+        binding.homeHistory.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToHistoryFragment()
             findNavController().navigate(action)
         }
 

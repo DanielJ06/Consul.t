@@ -41,21 +41,24 @@
     </fragment>
     <fragment
         android:id="@+id/professionalFragment"
-        tools:layout="@layout/fragment_register"
         android:name="com.ioasys.diversidade.ui.fragments.ProfessionalFragment"
-        android:label="ProfessionalFragment" >
+        android:label="ProfessionalFragment"
+        tools:layout="@layout/fragment_professionals">
 
         <argument
             android:name="token"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_professionalFragment_to_fragmentDetails"
+            app:destination="@id/fragmentDetails" />
 
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        tools:layout="@layout/fragment_profile"
         android:name="com.ioasys.diversidade.ui.fragments.ProfileFragment"
-        android:label="ProfileFragment">
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
 
         <argument
             android:name="token"
@@ -76,4 +79,44 @@
         android:id="@+id/historyFragment"
         android:name="com.ioasys.diversidade.ui.fragments.HistoryFragment"
         android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/fragmentDetails"
+        android:name="com.ioasys.diversidade.ui.fragments.FragmentDetails"
+        android:label="FragmentDetails">
+
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
+            android:name="lastName"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
+            android:name="crp"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
+            android:name="city"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
+            android:name="remotely"
+            app:argType="boolean" />
+
+        <argument
+            android:name="biography"
+            app:argType="string"
+            app:nullable="false" />
+
+    </fragment>
 </navigation>

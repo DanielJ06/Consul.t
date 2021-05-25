@@ -15,4 +15,7 @@
     <string name="disclaimer">Nosso objetivo é criar um ambiente para que todas as pessoas possam se sentir seguras ao procurarem uma consulta.\n \nTodos os profissionais listados aqui passam por aprovação e cada nova avaliação é levada em consideração.\n \nSomos um time diverso que busca sempre entregar uma solução de valor para nossos usuários!\n \nSe você conhece algum profissional que compactua com nossos valores, não se esqueça de compartilhar a consul.t.\n \nEspalhe essa ideia para que possamos ter cada vez mais aliados!</string>
     <string name="your_consults">Suas consultas</string>
     <string name="nothing_here">Parece que não há nada aqui...</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultrices sed rhoncus tortor fusce blandit purus, amet nunc pellentesque. Elementum quam interdum bibendum urna. Vel dui, varius eget pharetra et in ac integer. Eget nam quam sed dictum turpis. Nisi nisi lectus sed.</string>
+    <string name="about_me">Sobre mim:</string>
+    <string name="ask">Solicitar consulta</string>
 </resources>

@@ -33,31 +33,33 @@
             app:layout_constraintStart_toEndOf="@+id/arrowLeft"
             app:layout_constraintTop_toTopOf="@+id/arrowLeft" />
 
-        <TextView
-            android:id="@+id/your_profile_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/your_profile"
-            android:textColor="@color/black"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/arrowLeft" />
-
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/your_profile_text">
+            app:layout_constraintTop_toBottomOf="@id/goBack">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingHorizontal="25dp">
+
+                <TextView
+                    android:id="@+id/your_profile_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/your_profile"
+                    android:textColor="@color/black"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/arrowLeft" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/register_name_label"
@@ -175,7 +177,7 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/login_submit_button"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginTop="50dp"
                     android:layout_marginBottom="20dp"
@@ -183,11 +185,7 @@
                     android:text="@string/join"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/login_password_inputLayout" />
+                    android:textSize="24sp" />
 
             </LinearLayout>
 

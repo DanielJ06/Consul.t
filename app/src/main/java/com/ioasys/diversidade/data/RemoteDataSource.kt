@@ -29,7 +29,12 @@ class RemoteDataSource @Inject constructor(
         lastName: String,
         telephone: String
     ): Response<User> {
-        return myApi.signUp(RegisterCredentials(email, password, firstName, lastName, telephone))
+        return myApi.signUp(RegisterCredentials(
+            email = email,
+            password = password,
+            firstName = firstName,
+            lastName = lastName,
+            telephone = telephone))
     }
 
 }

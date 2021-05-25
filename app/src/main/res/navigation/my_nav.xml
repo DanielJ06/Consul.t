@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_howWorksFragment"
+            app:destination="@id/howWorksFragment" />
 
     </fragment>
     <fragment
@@ -62,4 +65,8 @@
             app:nullable="true" />
 
     </fragment>
+    <fragment
+        android:id="@+id/howWorksFragment"
+        android:name="com.ioasys.diversidade.ui.fragments.HowWorksFragment"
+        android:label="HowWorksFragment" />
 </navigation>

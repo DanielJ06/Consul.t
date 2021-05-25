@@ -37,6 +37,11 @@ class HomeFragment : Fragment() {
 
         binding.homeHelloMessage.text = "Olá, ${args.userName}!"
 
+        binding.homeHowWorks.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToHowWorksFragment()
+            findNavController().navigate(action)
+        }
+
         binding.buttonTest.setOnClickListener {
 //            authViewModel.logout()
 //            findNavController().setGraph(R.navigation.auth_graph)

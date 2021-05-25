@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.ioasys.diversidade.R
 import com.ioasys.diversidade.databinding.FragmentProfileBinding
 import com.ioasys.diversidade.utils.NetworkResult
 import com.ioasys.diversidade.viewmodels.AuthViewModel
@@ -41,6 +42,11 @@ class ProfileFragment : Fragment() {
 
         binding.goBack.setOnClickListener {
             findNavController().navigateUp()
+        }
+
+        binding.signoutBtn.setOnClickListener {
+            authViewModel.logout()
+            findNavController().setGraph(R.navigation.auth_graph)
         }
 
         requestDetails(args.userId.toString(), args.token.toString())

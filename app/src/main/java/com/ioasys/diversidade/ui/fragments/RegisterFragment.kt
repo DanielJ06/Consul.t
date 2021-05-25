@@ -86,7 +86,9 @@ class RegisterFragment : Fragment() {
         authViewModel.registerData.observe(viewLifecycleOwner, {res ->
             when (res) {
                 is NetworkResult.Success -> {
-                    val action = RegisterFragmentDirections.actionRegisterFragmentToSuccessAuthFragment()
+                    val email = emailET.text.toString()
+                    val pass = passwordET.text.toString()
+                    val action = RegisterFragmentDirections.actionRegisterFragmentToSuccessAuthFragment(email, pass)
                     findNavController().navigate(action)
                 }
                 is NetworkResult.Error -> {

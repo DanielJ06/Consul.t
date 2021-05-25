@@ -53,6 +53,14 @@ class RegisterFragment : Fragment() {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
+        binding.arrowLeft.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.goBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         firstNameIL = binding.registerFirstNameInputLayout
         firstNameET = binding.registerFirstNameEditText
         lastNameIL = binding.registerLastNameInputLayout

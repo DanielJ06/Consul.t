@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.homeHistory.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToHistoryFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToHistoryFragment(args.token, args.userId)
             findNavController().navigate(action)
         }
 

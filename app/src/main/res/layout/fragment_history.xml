@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -48,8 +49,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/goBack" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/consult_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@id/your_consults"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/consult_row_layout"/>
+
         <ImageView
             android:id="@+id/emptyImage"
+            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_empty_street"
@@ -61,6 +74,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/emptyText"
+            android:visibility="invisible"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/nothing_here"

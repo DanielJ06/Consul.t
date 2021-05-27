@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="consult"
+            type="com.ioasys.diversidade.models.Consult" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -155,16 +158,16 @@
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/purple"
             android:background="@drawable/rounded_button"
-            android:layout_marginHorizontal="24dp"
-            android:text="Avaliar"
+            android:backgroundTint="@color/purple"
             android:paddingVertical="15dp"
+            android:text="Avaliar"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="24sp"
-            android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -173,11 +176,11 @@
         <View
             android:layout_width="0dp"
             android:layout_height="2dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="24dp"
             android:background="#7000FF"
-            android:layout_marginHorizontal="24dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

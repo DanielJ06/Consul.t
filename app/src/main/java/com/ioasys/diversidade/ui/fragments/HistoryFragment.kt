@@ -45,12 +45,12 @@ class HistoryFragment: Fragment() {
         consultViewModel.consults.observe(viewLifecycleOwner, {res ->
             when (res) {
                 is NetworkResult.Success -> {
-                    Log.i("DEBUG Success", res.data.toString())
                     if (res.data?.data.isNullOrEmpty()) {
                         binding.emptyImage.visibility = View.VISIBLE
                         binding.emptyText.visibility = View.VISIBLE
                         binding.consultRv.visibility = View.INVISIBLE
                     }
+                    res.data?.let { mAdapter.setData(it.data) }
                 }
                 is NetworkResult.Error -> {
                     Log.i("DEBUG Error", res.message!!)

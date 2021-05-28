@@ -42,4 +42,8 @@ class ConsultAdapter: RecyclerView.Adapter<ConsultAdapter.ConsultViewHolder>() {
         return consults.size
     }
 
+    fun setData(data: List<Consult>) {
+        consults = data
+        notifyDataSetChanged()
+    }
 }

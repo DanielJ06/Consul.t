@@ -16,3 +16,8 @@ data class Consult(
 data class ConsultsList(
     val data: List<Consult>
 )
+
+data class ConsultParams(
+    val professionalId: String,
+    val reason: String
+)

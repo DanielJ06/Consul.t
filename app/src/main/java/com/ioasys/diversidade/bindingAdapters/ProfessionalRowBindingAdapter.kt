@@ -20,6 +20,7 @@ class ProfessionalRowBindingAdapter {
         ) {
             rowLayout.setOnClickListener {
                 val action = ProfessionalFragmentDirections.actionProfessionalFragmentToFragmentDetails(
+                    professionalId = professional.id,
                     name = professional.name,
                     lastName = professional.lastName,
                     crp = professional.crp,

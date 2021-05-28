@@ -49,6 +49,12 @@
             android:name="token"
             app:argType="string"
             app:nullable="true" />
+
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true" />
+
         <action
             android:id="@+id/action_professionalFragment_to_fragmentDetails"
             app:destination="@id/fragmentDetails" />
@@ -95,6 +101,11 @@
         android:id="@+id/fragmentDetails"
         android:name="com.ioasys.diversidade.ui.fragments.DetailsFragment"
         android:label="FragmentDetails">
+
+        <argument
+            android:name="professionalId"
+            app:argType="string"
+            app:nullable="true" />
 
         <argument
             android:name="name"

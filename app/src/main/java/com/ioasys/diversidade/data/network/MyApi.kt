@@ -17,6 +17,13 @@ interface MyApi {
         @Header("Authorization") token: String
     ): Response<ConsultsList>
 
+    @POST("users/{id}/consultations")
+    suspend fun requestConsults(
+        @Header("Authorization") token: String,
+        @Path("id") userId: String,
+        @Body consultParams: ConsultParams
+    ): Response<Any>
+
     @GET("users/{id}")
     suspend fun getAccountDetails(
         @Path("id") id: String,

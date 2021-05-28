@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape>
+            <gradient
+                android:centerColor="@color/light_pink"
+                android:endColor="@color/light_orange"
+                android:startColor="#9EB3FF" />
+        </shape>
+    </item>
+
+    <item
+        android:drawable="@drawable/ic_white_logo"
+        android:gravity="center_horizontal|center_vertical" />
+
+</layer-list>

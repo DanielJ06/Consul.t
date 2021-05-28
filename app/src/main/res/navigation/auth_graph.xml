@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_loginFragment_to_my_nav"
             app:destination="@id/my_nav"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true">
 
@@ -34,29 +38,31 @@
         </action>
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <include app:graph="@navigation/my_nav" />
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.ioasys.diversidade.ui.fragments.RegisterFragment"
         android:label="RegisterFragment"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_successAuthFragment"
             app:destination="@id/successAuthFragment"
             app:enterAnim="@anim/slide_in_top"
             app:exitAnim="@anim/slide_out_bottom"
             app:popEnterAnim="@anim/slide_in_bottom"
-            app:popExitAnim="@anim/slide_out_top"
-            app:popUpTo="@id/registerFragment"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/slide_out_top" />
     </fragment>
     <fragment
         android:id="@+id/successAuthFragment"
-        tools:layout="@layout/fragment_success_auth"
         android:name="com.ioasys.diversidade.ui.fragments.SuccessAuthFragment"
-        android:label="SuccessAuthFragment">
+        android:label="SuccessAuthFragment"
+        tools:layout="@layout/fragment_success_auth">
 
         <argument
             android:name="email"
@@ -70,6 +76,10 @@
         <action
             android:id="@+id/action_successAuthFragment_to_my_nav"
             app:destination="@id/my_nav"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/registerFragment"
             app:popUpToInclusive="true">
 

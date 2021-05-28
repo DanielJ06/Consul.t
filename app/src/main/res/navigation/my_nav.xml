@@ -27,15 +27,31 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_homeFragment_to_professionalFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/professionalFragment" />
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/profileFragment" />
         <action
             android:id="@+id/action_homeFragment_to_howWorksFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/howWorksFragment" />
         <action
             android:id="@+id/action_homeFragment_to_historyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/historyFragment" />
 
     </fragment>
@@ -57,6 +73,10 @@
 
         <action
             android:id="@+id/action_professionalFragment_to_fragmentDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/fragmentDetails" />
 
     </fragment>

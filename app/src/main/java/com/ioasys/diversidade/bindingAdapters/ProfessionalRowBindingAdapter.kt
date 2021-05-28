@@ -1,6 +1,7 @@
 package com.ioasys.diversidade.bindingAdapters
 
 import android.util.Log
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
@@ -28,6 +29,20 @@ class ProfessionalRowBindingAdapter {
                     biography = professional.biography
                 )
                 rowLayout.findNavController().navigate(action)
+            }
+        }
+
+        @BindingAdapter("setupLocationCity", "setupLocationRemotely", requireAll = true)
+        @JvmStatic
+        fun setupLocation(
+            view: TextView,
+            city: String,
+            remotely: Boolean
+        ) {
+            if (remotely) {
+                view.text = "Atendimento: Remoto ou em $city"
+            } else {
+                view.text = "Atendimento: $city"
             }
         }
 

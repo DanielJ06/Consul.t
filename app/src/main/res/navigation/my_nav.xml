@@ -93,7 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentDetails"
-        android:name="com.ioasys.diversidade.ui.fragments.FragmentDetails"
+        android:name="com.ioasys.diversidade.ui.fragments.DetailsFragment"
         android:label="FragmentDetails">
 
         <argument

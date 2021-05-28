@@ -70,7 +70,7 @@
                     android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="@{professional.email}"
+                    android:text="@{professional.crp}"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toTopOf="@+id/professional_email"
@@ -87,6 +87,7 @@
                     android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:maxLines="1"
+                    android:text="@{professional.email}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@id/professional_picture"
@@ -95,11 +96,12 @@
                     tools:text="Daniel de Jesus" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    setupLocationCity="@{professional.city}"
+                    setupLocationRemotely="@{professional.remotely}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="15dp"
-                    android:text="Atendimento remoto"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="16sp"

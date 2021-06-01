@@ -133,6 +133,7 @@
                     app:layout_constraintEnd_toEndOf="@id/consult_status"
                     app:layout_constraintStart_toStartOf="@id/consult_status"
                     app:layout_constraintTop_toBottomOf="@id/consult_status"
+                    setStatus="@{consult.status}"
                     app:strokeColor="#6C8DFF"
                     app:strokeWidth="2dp">
 
@@ -142,10 +143,10 @@
                         android:paddingHorizontal="24dp"
                         android:paddingVertical="10dp">
 
-                        <androidx.appcompat.widget.AppCompatTextView
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{consult.status}"
+                            setStatus="@{consult.status}"
                             android:textColor="#6C8DFF"
                             android:textSize="24sp"
                             android:textStyle="bold" />

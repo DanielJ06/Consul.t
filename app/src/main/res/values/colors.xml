@@ -14,6 +14,8 @@
     <color name="blue">#6C8DFF</color>
     <color name="orange">#ED7E3F</color>
     <color name="yellow">#EDC73F</color>
+    <color name="green">#38D75B</color>
+    <color name="red">#E46016</color>
     
     <!-- Gradient colors -->
     <color name="light_orange">#E37D7D</color>

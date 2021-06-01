@@ -18,4 +18,7 @@
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultrices sed rhoncus tortor fusce blandit purus, amet nunc pellentesque. Elementum quam interdum bibendum urna. Vel dui, varius eget pharetra et in ac integer. Eget nam quam sed dictum turpis. Nisi nisi lectus sed.</string>
     <string name="about_me">Sobre mim:</string>
     <string name="ask">Solicitar consulta</string>
+    <string name="confirmed">confirmado</string>
+    <string name="name">Nome:</string>
+    <string name="phone">Telefone</string>
 </resources>

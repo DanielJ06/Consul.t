@@ -86,7 +86,8 @@ class DetailsFragment : Fragment() {
         consultViewModel.requestStatus.observe(viewLifecycleOwner, {res ->
             when (res) {
                 is NetworkResult.Success -> {
-                    Toast.makeText(requireContext(), "Marcou", Toast.LENGTH_SHORT).show()
+                    val action = DetailsFragmentDirections.actionFragmentDetailsToSuccessConsultFragment()
+                    findNavController().navigate(action)
                 }
                 is NetworkResult.Error -> {
                     res.message?.let { Log.i("DEBUG", it) }

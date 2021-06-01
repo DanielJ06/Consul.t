@@ -10,19 +10,20 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ioasys.diversidade.R
+import com.ioasys.diversidade.databinding.FragmentEditProfileBinding
 import com.ioasys.diversidade.databinding.FragmentProfileBinding
 import com.ioasys.diversidade.utils.NetworkResult
 import com.ioasys.diversidade.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment() {
+class EditProfileFragment : Fragment() {
 
-    private var _binding: FragmentProfileBinding? = null
+    private var _binding: FragmentEditProfileBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var authViewModel: AuthViewModel
-    private val args: ProfileFragmentArgs by navArgs()
+    private val args: EditProfileFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
         binding.arrowLeft.setOnClickListener {
@@ -42,19 +43,6 @@ class ProfileFragment : Fragment() {
 
         binding.goBack.setOnClickListener {
             findNavController().navigateUp()
-        }
-
-        binding.signoutBtn.setOnClickListener {
-            authViewModel.logout()
-            findNavController().setGraph(R.navigation.auth_graph)
-        }
-
-        binding.goToEdit.setOnClickListener {
-            val action = ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment(
-                args.token,
-                args.userId
-            )
-            findNavController().navigate(action);
         }
 
         requestDetails(args.userId.toString(), args.token.toString())
@@ -68,9 +56,10 @@ class ProfileFragment : Fragment() {
         authViewModel.profile.observe(viewLifecycleOwner, { res ->
             when (res) {
                 is NetworkResult.Success -> {
-                    binding.userName.text = "${res.data?.firstName} ${res.data?.lastName}"
-                    binding.userPhone.text = res.data?.telephone
-                    binding.userEmail.text = res.data?.email
+                    binding.registerFirstNameEditText.setText(res.data?.firstName)
+                    binding.registerLastNameEditText.setText(res.data?.lastName)
+                    binding.registerPhoneEditText.setText(res.data?.telephone)
+                    binding.registerEmailEditText.setText(res.data?.email)
                     Log.i("DEBUG", res.data.toString())
                 }
                 is NetworkResult.Error -> {

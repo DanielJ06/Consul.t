@@ -1,4 +1,4 @@
-#Project logo here
+<img src=".github/cover.png" />
 
 # Consul.t
  Canal de indicação e validação de profissionais que atendem pessoas trans. Projeto desenvolvido durante o Ioasys CAMP 2021

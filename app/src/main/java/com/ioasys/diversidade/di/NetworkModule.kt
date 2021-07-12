@@ -1,7 +1,7 @@
 package com.ioasys.diversidade.di
 
+import com.ioasys.diversidade.BuildConfig
 import com.ioasys.diversidade.data.network.MyApi
-import com.ioasys.diversidade.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,7 +38,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()

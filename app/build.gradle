@@ -10,6 +10,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    def envProperties = new Properties()
+    envProperties.load(project.rootProject.file("environment.properties").newDataInputStream())
+    ext.environmentProperties = envProperties
+
     defaultConfig {
         applicationId "com.ioasys.diversidade"
         minSdkVersion 21
@@ -21,8 +25,16 @@ android {
     }
 
     buildTypes {
+        dev {
+            debuggable true
+            signingConfig signingConfigs.debug
+            applicationIdSuffix ".dev"
+            buildConfigField "String", "BASE_URL", envProperties.getProperty('BASE_URL')
+        }
+
         release {
             minifyEnabled false
+            buildConfigField "String", "BASE_URL", envProperties.getProperty('BASE_URL')
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

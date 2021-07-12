@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.content.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
@@ -16,6 +17,8 @@ import androidx.navigation.fragment.findNavController
 import com.ioasys.diversidade.R
 import com.ioasys.diversidade.databinding.FragmentLoginBinding
 import com.ioasys.diversidade.models.DataStoreUser
+import com.ioasys.diversidade.utils.Constants.Companion.ACCESS_TOKEN
+import com.ioasys.diversidade.utils.Constants.Companion.SHARED_PREFERENCE
 import com.ioasys.diversidade.utils.NetworkResult
 import com.ioasys.diversidade.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -82,6 +85,13 @@ class LoginFragment : Fragment() {
                     val id = res.data?.user?.id
                     val name = res.data?.user?.firstName
                     val token = res.data?.token
+
+                    val sharedPreferences =
+                        context?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE)
+
+                    sharedPreferences?.edit {
+                        putString(ACCESS_TOKEN, token)
+                    }
 
                     authViewModel.saveUserInfo(id!!, name!!, token!!)
 

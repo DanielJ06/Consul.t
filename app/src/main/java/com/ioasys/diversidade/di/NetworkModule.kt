@@ -1,12 +1,16 @@
 package com.ioasys.diversidade.di
 
+import android.content.Context
 import com.ioasys.diversidade.BuildConfig
 import com.ioasys.diversidade.data.network.MyApi
+import com.ioasys.diversidade.utils.TokenInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -18,9 +22,21 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideHttpClient(): OkHttpClient {
+    fun provideApplicationContext(
+        @ApplicationContext context: Context
+    ) = context
+
+    @Singleton
+    @Provides
+    fun provideHttpClient(
+        context: Context
+    ): OkHttpClient {
         return OkHttpClient.Builder()
-            .readTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .addInterceptor(TokenInterceptor(context))
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            })
             .connectTimeout(30, TimeUnit.SECONDS)
             .build()
     }

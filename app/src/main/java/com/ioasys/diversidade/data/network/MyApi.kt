@@ -7,14 +7,11 @@ import retrofit2.http.*
 interface MyApi {
 
     @GET("professionals")
-    suspend fun loadProfessionals(
-        @Header("Authorization") token: String
-    ): Response<ProfessionalsList>
+    suspend fun loadProfessionals(): Response<ProfessionalsList>
 
     @GET("users/{id}/consultations")
     suspend fun loadConsults(
-        @Path("id") id: String,
-        @Header("Authorization") token: String
+        @Path("id") id: String
     ): Response<ConsultsList>
 
     @POST("users/{id}/consultations")

@@ -23,7 +23,6 @@ class ProfessionalFragment: Fragment() {
     private var _binding: FragmentProfessionalsBinding? = null
     private val binding get() = _binding!!
 
-    private val args: ProfessionalFragmentArgs by navArgs()
     private lateinit var professionalViewModel: ProfessionalViewModel
 
     private val mAdapter by lazy { ProfessionalAdapter() }
@@ -50,14 +49,14 @@ class ProfessionalFragment: Fragment() {
         }
 
         setupRecycler()
-        requestProfessionals(args.token!!)
+        requestProfessionals()
 
         return binding.root
     }
 
-    private fun requestProfessionals(token: String) {
+    private fun requestProfessionals() {
         Log.i("PROFESSIONAL", "home called")
-        professionalViewModel.loadProfessionals(token)
+        professionalViewModel.loadProfessionals()
         professionalViewModel.professionals.observe(viewLifecycleOwner, {res ->
             when(res) {
                 is NetworkResult.Success -> {

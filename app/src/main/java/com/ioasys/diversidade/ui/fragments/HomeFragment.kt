@@ -44,19 +44,18 @@ class HomeFragment : Fragment() {
 
         binding.buttonTest.setOnClickListener {
             val action =
-                HomeFragmentDirections.actionHomeFragmentToProfileFragment(args.token, args.userId)
+                HomeFragmentDirections.actionHomeFragmentToProfileFragment(args.userId)
             findNavController().navigate(action)
         }
 
         binding.homeHistory.setOnClickListener {
             val action =
-                HomeFragmentDirections.actionHomeFragmentToHistoryFragment(args.token, args.userId)
+                HomeFragmentDirections.actionHomeFragmentToHistoryFragment(args.userId)
             findNavController().navigate(action)
         }
 
         binding.homeOurProfessionals.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToProfessionalFragment(
-                args.token,
                 args.userId
             )
             findNavController().navigate(action)

@@ -40,9 +40,9 @@ class AuthViewModel @Inject constructor(
     val registerData: MutableLiveData<NetworkResult<User>> = MutableLiveData()
     val profile: MutableLiveData<NetworkResult<UserData>> = MutableLiveData()
 
-    fun getDetailsAccount(userId: String, token: String) = viewModelScope.launch {
+    fun getDetailsAccount(userId: String) = viewModelScope.launch {
         try {
-            val response = repository.remote.getAccountDetails(userId, token)
+            val response = repository.remote.getAccountDetails(userId)
             Log.i("DEBUG", response.body().toString())
             profile.value = handleAccount(response)
         } catch (e: Exception) {

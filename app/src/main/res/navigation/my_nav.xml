@@ -20,11 +20,6 @@
             android:name="userName"
             app:argType="string"
             app:nullable="true" />
-
-        <argument
-            android:name="token"
-            app:argType="string"
-            app:nullable="true" />
         <action
             android:id="@+id/action_homeFragment_to_professionalFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -62,11 +57,6 @@
         tools:layout="@layout/fragment_professionals">
 
         <argument
-            android:name="token"
-            app:argType="string"
-            app:nullable="true" />
-
-        <argument
             android:name="userId"
             app:argType="string"
             app:nullable="true" />
@@ -87,11 +77,6 @@
         tools:layout="@layout/fragment_profile">
 
         <argument
-            android:name="token"
-            app:argType="string"
-            app:nullable="true" />
-
-        <argument
             android:name="userId"
             app:argType="string"
             app:nullable="true" />
@@ -108,11 +93,6 @@
         android:id="@+id/historyFragment"
         android:name="com.ioasys.diversidade.ui.fragments.HistoryFragment"
         android:label="HistoryFragment" >
-
-        <argument
-            android:name="token"
-            app:argType="string"
-            app:nullable="true" />
 
         <argument
             android:name="userId"
@@ -172,11 +152,6 @@
         android:id="@+id/editProfileFragment"
         android:name="com.ioasys.diversidade.ui.fragments.EditProfileFragment"
         android:label="EditProfileFragment">
-
-        <argument
-            android:name="token"
-            app:argType="string"
-            app:nullable="true" />
 
         <argument
             android:name="userId"

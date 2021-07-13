@@ -41,7 +41,7 @@ class HistoryFragment: Fragment() {
 
         setupRecycler()
 
-        consultViewModel.loadConsults(args.userId!!, args.token!!)
+        consultViewModel.loadConsults(args.userId!!)
         consultViewModel.consults.observe(viewLifecycleOwner, {res ->
             when (res) {
                 is NetworkResult.Success -> {

@@ -22,9 +22,9 @@ class ConsultViewModel @Inject constructor(
     val consults: MutableLiveData<NetworkResult<ConsultsList>> = MutableLiveData()
     val requestStatus: MutableLiveData<NetworkResult<Any>> = MutableLiveData()
 
-    fun loadConsults(userId: String, token: String) = viewModelScope.launch {
+    fun loadConsults(userId: String) = viewModelScope.launch {
         try {
-            val res = repository.remote.loadConsults(userId, token)
+            val res = repository.remote.loadConsults(userId)
             consults.value = handleConsults(res)
         } catch (e: Exception ) {
             Log.i("DEBUG", e.toString())
@@ -32,13 +32,12 @@ class ConsultViewModel @Inject constructor(
     }
 
     fun requestConsult(
-        token: String,
         userId: String,
         professionalId: String,
         reason: String
     ) = viewModelScope.launch {
         try {
-            val res = repository.remote.requestConsults(token, userId, professionalId, reason)
+            val res = repository.remote.requestConsults(userId, professionalId, reason)
             requestStatus.value = handleConsultRequest(res)
         } catch (e: Exception) {
             Log.i("DEGUB", e.toString())

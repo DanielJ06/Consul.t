@@ -20,9 +20,9 @@ class ProfessionalViewModel @Inject constructor(
 
     val professionals: MutableLiveData<NetworkResult<ProfessionalsList>> = MutableLiveData()
 
-    fun loadProfessionals(token: String) = viewModelScope.launch {
+    fun loadProfessionals() = viewModelScope.launch {
         try {
-            val response = repository.remote.loadProfessionals(token)
+            val response = repository.remote.loadProfessionals()
             professionals.value = handleProfessionals(response)
         } catch (e: Exception) {
             Log.i("responseError", e.toString())

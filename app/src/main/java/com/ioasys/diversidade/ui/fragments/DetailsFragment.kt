@@ -80,7 +80,7 @@ class DetailsFragment : Fragment() {
         }
 
         binding.submitButton.setOnClickListener {
-            requestConsult(token, userId, args.professionalId!!, "Problems")
+            requestConsult(userId, args.professionalId!!, "Problems")
         }
 
         consultViewModel.requestStatus.observe(viewLifecycleOwner, {res ->
@@ -99,12 +99,11 @@ class DetailsFragment : Fragment() {
     }
 
     private fun requestConsult(
-        token: String,
         userId: String,
         professionalId: String,
         reason: String
     ) {
-        consultViewModel.requestConsult(token, userId, professionalId, reason)
+        consultViewModel.requestConsult(userId, professionalId, reason)
     }
 
     override fun onDestroyOptionsMenu() {

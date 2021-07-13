@@ -16,15 +16,13 @@ interface MyApi {
 
     @POST("users/{id}/consultations")
     suspend fun requestConsults(
-        @Header("Authorization") token: String,
         @Path("id") userId: String,
         @Body consultParams: ConsultParams
     ): Response<Any>
 
     @GET("users/{id}")
     suspend fun getAccountDetails(
-        @Path("id") id: String,
-        @Header("Authorization") token: String
+        @Path("id") id: String
     ): Response<UserData>
 
     @POST("auth/signin")

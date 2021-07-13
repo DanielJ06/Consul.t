@@ -51,20 +51,19 @@ class ProfileFragment : Fragment() {
 
         binding.goToEdit.setOnClickListener {
             val action = ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment(
-                args.token,
                 args.userId
             )
             findNavController().navigate(action);
         }
 
-        requestDetails(args.userId.toString(), args.token.toString())
+        requestDetails(args.userId.toString())
         Log.i("debug", args.userId.toString())
 
         return binding.root
     }
 
-    private fun requestDetails(id: String, token: String) {
-        authViewModel.getDetailsAccount(id, token)
+    private fun requestDetails(id: String) {
+        authViewModel.getDetailsAccount(id)
         authViewModel.profile.observe(viewLifecycleOwner, { res ->
             when (res) {
                 is NetworkResult.Success -> {

@@ -10,29 +10,27 @@ class RemoteDataSource @Inject constructor(
     private val myApi: MyApi
 ) {
 
-    suspend fun loadProfessionals(token: String): Response<ProfessionalsList> {
+    suspend fun loadProfessionals(): Response<ProfessionalsList> {
         return myApi.loadProfessionals()
     }
 
-    suspend fun loadConsults(userId: String, token: String): Response<ConsultsList> {
+    suspend fun loadConsults(userId: String): Response<ConsultsList> {
         return myApi.loadConsults(userId)
     }
 
     suspend fun requestConsults(
-        token: String,
         userId: String,
         professionalId: String,
         reason: String
     ): Response<Any> {
         return myApi.requestConsults(
-            token = "Bearer $token",
             userId = userId,
             consultParams = ConsultParams(professionalId, reason)
         )
     }
 
-    suspend fun getAccountDetails(userId: String, token: String): Response<UserData> {
-        return myApi.getAccountDetails(userId, "Bearer $token")
+    suspend fun getAccountDetails(userId: String): Response<UserData> {
+        return myApi.getAccountDetails(userId)
     }
 
     suspend fun signIn(email: String, password: String): Response<User> {

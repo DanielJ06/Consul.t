@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ioasys.diversidade.data.Repository
+import com.ioasys.diversidade.data.remote.repository.ConsultationRepository
 import com.ioasys.diversidade.domain.models.ConsultsList
 import com.ioasys.diversidade.utils.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ConsultViewModel @Inject constructor(
-    val repository: Repository
+    val consultationRepository: ConsultationRepository
 ): ViewModel() {
 
     val consults: MutableLiveData<ViewState<ConsultsList>> = MutableLiveData()
@@ -23,7 +24,7 @@ class ConsultViewModel @Inject constructor(
 
     fun loadConsults(userId: String) = viewModelScope.launch {
         try {
-            val res = repository.remote.loadConsults(userId)
+            val res = consultationRepository.loadConsults(userId)
             consults.value = handleConsults(res)
         } catch (e: Exception ) {
             Log.i("DEBUG", e.toString())
@@ -36,7 +37,7 @@ class ConsultViewModel @Inject constructor(
         reason: String
     ) = viewModelScope.launch {
         try {
-            val res = repository.remote.requestConsults(userId, professionalId, reason)
+            val res = consultationRepository.requestConsults(userId, professionalId, reason)
             requestStatus.value = handleConsultRequest(res)
         } catch (e: Exception) {
             Log.i("DEGUB", e.toString())

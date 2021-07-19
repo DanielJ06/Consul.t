@@ -13,18 +13,5 @@ class RemoteDataSource @Inject constructor(
         return myApi.loadProfessionals()
     }
 
-    suspend fun loadConsults(userId: String): Response<ConsultsList> {
-        return myApi.loadConsults(userId)
-    }
 
-    suspend fun requestConsults(
-        userId: String,
-        professionalId: String,
-        reason: String
-    ): Response<Any> {
-        return myApi.requestConsults(
-            userId = userId,
-            consultParams = ConsultParams(professionalId, reason)
-        )
-    }
 }

@@ -1,6 +1,6 @@
 package com.ioasys.diversidade.data.network
 
-import com.ioasys.diversidade.models.*
+import com.ioasys.diversidade.domain.models.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -19,20 +19,5 @@ interface MyApi {
         @Path("id") userId: String,
         @Body consultParams: ConsultParams
     ): Response<Any>
-
-    @GET("users/{id}")
-    suspend fun getAccountDetails(
-        @Path("id") id: String
-    ): Response<UserData>
-
-    @POST("auth/signin")
-    suspend fun signIn(
-        @Body userCredentials: UserCredentials
-    ): Response<User>
-
-    @POST("auth/signup")
-    suspend fun signUp(
-        @Body credentials: RegisterCredentials
-    ): Response<User>
 
 }

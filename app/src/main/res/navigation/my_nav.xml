@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ioasys.diversidade.ui.fragments.HomeFragment"
+        android:name="com.ioasys.diversidade.presentation.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
 
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/professionalFragment"
-        android:name="com.ioasys.diversidade.ui.fragments.ProfessionalFragment"
+        android:name="com.ioasys.diversidade.presentation.ui.fragments.ProfessionalFragment"
         android:label="ProfessionalFragment"
         tools:layout="@layout/fragment_professionals">
 
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.ioasys.diversidade.ui.fragments.ProfileFragment"
+        android:name="com.ioasys.diversidade.presentation.ui.fragments.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile">
 
@@ -87,11 +87,11 @@
     </fragment>
     <fragment
         android:id="@+id/howWorksFragment"
-        android:name="com.ioasys.diversidade.ui.fragments.HowWorksFragment"
+        android:name="com.ioasys.diversidade.presentation.ui.fragments.HowWorksFragment"
         android:label="HowWorksFragment" />
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.ioasys.diversidade.ui.fragments.HistoryFragment"
+        android:name="com.ioasys.diversidade.presentation.ui.fragments.HistoryFragment"
         android:label="HistoryFragment" >
 
         <argument
@@ -102,7 +102,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentDetails"
-        android:name="com.ioasys.diversidade.ui.fragments.DetailsFragment"
+        android:name="com.ioasys.diversidade.presentation.ui.fragments.DetailsFragment"
         android:label="FragmentDetails">
 
         <argument
@@ -150,7 +150,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.ioasys.diversidade.ui.fragments.EditProfileFragment"
+        android:name="com.ioasys.diversidade.presentation.ui.fragments.EditProfileFragment"
         android:label="EditProfileFragment">
 
         <argument
@@ -161,7 +161,7 @@
     </fragment>
     <fragment
         android:id="@+id/successConsultFragment"
-        android:name="com.ioasys.diversidade.ui.fragments.SuccessConsultFragment"
+        android:name="com.ioasys.diversidade.presentation.ui.fragments.SuccessConsultFragment"
         android:label="SuccessConsultFragment" >
         <action
             android:id="@+id/action_successConsultFragment_to_homeFragment"

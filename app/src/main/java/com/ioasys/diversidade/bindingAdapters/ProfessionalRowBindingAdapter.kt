@@ -5,8 +5,8 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
-import com.ioasys.diversidade.models.Professional
-import com.ioasys.diversidade.ui.fragments.ProfessionalFragmentDirections
+import com.ioasys.diversidade.domain.models.Professional
+import com.ioasys.diversidade.presentation.ui.fragments.ProfessionalFragmentDirections
 
 class ProfessionalRowBindingAdapter {
 

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ioasys.diversidade.databinding.ConsultRowLayoutBinding
-import com.ioasys.diversidade.models.Consult
+import com.ioasys.diversidade.domain.models.Consult
 
 class ConsultAdapter: RecyclerView.Adapter<ConsultAdapter.ConsultViewHolder>() {
 

@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ioasys.diversidade.databinding.ProfessionalRowLayoutBinding
-import com.ioasys.diversidade.models.Professional
-import com.ioasys.diversidade.models.ProfessionalsList
+import com.ioasys.diversidade.domain.models.Professional
+import com.ioasys.diversidade.domain.models.ProfessionalsList
 
 class ProfessionalAdapter: RecyclerView.Adapter<ProfessionalAdapter.ProfessionalViewHolder>() {
 

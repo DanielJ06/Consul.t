@@ -7,7 +7,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.ioasys.diversidade.models.DataStoreUser
+import com.ioasys.diversidade.domain.models.DataStoreUser
 import com.ioasys.diversidade.utils.Constants.Companion.ACCESS_TOKEN
 import com.ioasys.diversidade.utils.Constants.Companion.PREFERENCES_NAME
 import com.ioasys.diversidade.utils.Constants.Companion.USER_ID

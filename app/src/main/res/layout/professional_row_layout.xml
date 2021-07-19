@@ -7,7 +7,7 @@
 
         <variable
             name="professional"
-            type="com.ioasys.diversidade.models.Professional" />
+            type="com.ioasys.diversidade.domain.models.Professional" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

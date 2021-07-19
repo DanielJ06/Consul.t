@@ -6,7 +6,7 @@
 
         <variable
             name="user"
-            type="com.ioasys.diversidade.viewmodels.AuthViewModel" />
+            type="com.ioasys.diversidade.presentation.viewmodels.AuthViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

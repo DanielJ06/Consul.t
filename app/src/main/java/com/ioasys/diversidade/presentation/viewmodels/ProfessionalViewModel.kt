@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ioasys.diversidade.data.Repository
+import com.ioasys.diversidade.data.remote.repository.ProfessionalRepository
 import com.ioasys.diversidade.domain.models.ProfessionalsList
 import com.ioasys.diversidade.utils.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,14 +14,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfessionalViewModel @Inject constructor(
-    private val repository: Repository
+    private val professionalRepository: ProfessionalRepository
 ): ViewModel() {
 
     val professionals: MutableLiveData<ViewState<ProfessionalsList>> = MutableLiveData()
 
     fun loadProfessionals() = viewModelScope.launch {
         try {
-            val response = repository.remote.loadProfessionals()
+            val response =  professionalRepository.loadProfessionals()
             professionals.value = handleProfessionals(response)
         } catch (e: Exception) {
             Log.i("responseError", e.toString())

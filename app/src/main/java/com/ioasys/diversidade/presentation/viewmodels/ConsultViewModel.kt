@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ioasys.diversidade.data.Repository
 import com.ioasys.diversidade.data.remote.repository.ConsultationRepository
 import com.ioasys.diversidade.domain.models.ConsultsList
 import com.ioasys.diversidade.utils.ViewState

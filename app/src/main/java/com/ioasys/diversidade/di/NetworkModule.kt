@@ -2,7 +2,6 @@ package com.ioasys.diversidade.di
 
 import android.content.Context
 import com.ioasys.diversidade.BuildConfig
-import com.ioasys.diversidade.data.network.MyApi
 import com.ioasys.diversidade.utils.TokenInterceptor
 import dagger.Module
 import dagger.Provides
@@ -44,7 +43,7 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideConverterFactory(): GsonConverterFactory {
-        return  GsonConverterFactory.create();
+        return GsonConverterFactory.create();
     }
 
     @Singleton
@@ -58,12 +57,6 @@ object NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideApiService(retrofit: Retrofit): MyApi {
-        return retrofit.create(MyApi::class.java)
     }
 
 }

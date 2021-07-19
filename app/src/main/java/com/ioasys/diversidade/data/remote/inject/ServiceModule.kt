@@ -2,6 +2,7 @@ package com.ioasys.diversidade.data.remote.inject
 
 import com.ioasys.diversidade.data.remote.services.AuthService
 import com.ioasys.diversidade.data.remote.services.ConsultationService
+import com.ioasys.diversidade.data.remote.services.ProfessionalService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,6 +25,12 @@ object ServiceModule {
     @Provides
     fun provideConsultationService(retrofit: Retrofit): ConsultationService {
         return retrofit.create(ConsultationService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideProfessionalService(retrofit: Retrofit): ProfessionalService {
+        return retrofit.create(ProfessionalService::class.java)
     }
 
 }

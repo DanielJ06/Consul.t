@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ioasys.diversidade.data.remote.repository.ProfessionalRepository
+import com.ioasys.diversidade.domain.repository.ProfessionalRepository
 import com.ioasys.diversidade.domain.models.ProfessionalsList
 import com.ioasys.diversidade.utils.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,15 +1,14 @@
 package com.ioasys.diversidade.data.remote.inject
 
-import com.ioasys.diversidade.data.remote.repository.AuthRepository
-import com.ioasys.diversidade.data.remote.repository.ConsultationRepository
-import com.ioasys.diversidade.data.remote.repository.ProfessionalRepository
-import com.ioasys.diversidade.data.remote.repositoryImpl.AuthRepositoryImpl
-import com.ioasys.diversidade.data.remote.repositoryImpl.ConsultationRepositoryImpl
-import com.ioasys.diversidade.data.remote.repositoryImpl.ProfessionalRepositoryImpl
-import com.ioasys.diversidade.data.remote.services.AuthService
-import com.ioasys.diversidade.data.remote.services.ConsultationService
-import com.ioasys.diversidade.data.remote.services.ProfessionalService
-import com.ioasys.diversidade.domain.models.Professional
+import com.ioasys.diversidade.data.remote.dataSource.AuthDataSource
+import com.ioasys.diversidade.data.remote.dataSource.ConsultationDataSource
+import com.ioasys.diversidade.data.remote.dataSource.ProfessionalDataSource
+import com.ioasys.diversidade.data.remote.repository.AuthRepositoryImpl
+import com.ioasys.diversidade.data.remote.repository.ConsultationRepositoryImpl
+import com.ioasys.diversidade.data.remote.repository.ProfessionalRepositoryImpl
+import com.ioasys.diversidade.domain.repository.AuthRepository
+import com.ioasys.diversidade.domain.repository.ConsultationRepository
+import com.ioasys.diversidade.domain.repository.ProfessionalRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,19 +22,19 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun providesAuthRepository(
-        service: AuthService
-    ): AuthRepository = AuthRepositoryImpl(service)
+        dataSource: AuthDataSource
+    ): AuthRepository = AuthRepositoryImpl(dataSource)
 
     @Singleton
     @Provides
     fun providesConsultationRepository(
-        service: ConsultationService
-    ): ConsultationRepository = ConsultationRepositoryImpl(service)
+        dataSource: ConsultationDataSource
+    ): ConsultationRepository = ConsultationRepositoryImpl(dataSource)
 
     @Singleton
     @Provides
     fun providesProfessionalRepository(
-        service: ProfessionalService
-    ): ProfessionalRepository = ProfessionalRepositoryImpl(service)
+        dataSource: ProfessionalDataSource
+    ): ProfessionalRepository = ProfessionalRepositoryImpl(dataSource)
 
 }

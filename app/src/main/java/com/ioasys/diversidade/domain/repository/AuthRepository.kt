@@ -1,4 +1,4 @@
-package com.ioasys.diversidade.data.remote.repository
+package com.ioasys.diversidade.domain.repository
 
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserData

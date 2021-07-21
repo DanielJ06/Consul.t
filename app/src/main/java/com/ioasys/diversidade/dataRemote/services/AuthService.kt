@@ -1,4 +1,4 @@
-package com.ioasys.diversidade.data.remote.services
+package com.ioasys.diversidade.dataRemote.services
 
 import com.ioasys.diversidade.domain.models.RegisterCredentials
 import com.ioasys.diversidade.domain.models.User

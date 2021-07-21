@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ioasys.diversidade.data.DataStoreRepository
-import com.ioasys.diversidade.data.remote.repository.AuthRepository
+import com.ioasys.diversidade.domain.repository.AuthRepository
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserData
 import com.ioasys.diversidade.utils.ViewState

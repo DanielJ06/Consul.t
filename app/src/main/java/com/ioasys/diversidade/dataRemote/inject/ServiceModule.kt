@@ -1,14 +1,13 @@
-package com.ioasys.diversidade.data.remote.inject
+package com.ioasys.diversidade.dataRemote.inject
 
-import com.ioasys.diversidade.data.remote.services.AuthService
-import com.ioasys.diversidade.data.remote.services.ConsultationService
-import com.ioasys.diversidade.data.remote.services.ProfessionalService
+import com.ioasys.diversidade.dataRemote.services.AuthService
+import com.ioasys.diversidade.dataRemote.services.ConsultationService
+import com.ioasys.diversidade.dataRemote.services.ProfessionalService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module

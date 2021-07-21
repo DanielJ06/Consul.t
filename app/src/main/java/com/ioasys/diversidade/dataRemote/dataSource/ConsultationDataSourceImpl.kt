@@ -1,15 +1,15 @@
-package com.ioasys.diversidade.data.remote.repositoryImpl
+package com.ioasys.diversidade.dataRemote.dataSource
 
-import com.ioasys.diversidade.data.remote.repository.ConsultationRepository
-import com.ioasys.diversidade.data.remote.services.ConsultationService
+import com.ioasys.diversidade.data.remote.dataSource.ConsultationDataSource
+import com.ioasys.diversidade.dataRemote.services.ConsultationService
 import com.ioasys.diversidade.domain.models.ConsultParams
 import com.ioasys.diversidade.domain.models.ConsultsList
 import retrofit2.Response
 import javax.inject.Inject
 
-class ConsultationRepositoryImpl @Inject constructor(
+class ConsultationDataSourceImpl @Inject constructor(
     private val consultationService: ConsultationService
-): ConsultationRepository {
+) : ConsultationDataSource {
 
     override suspend fun loadConsults(userId: String): Response<ConsultsList> {
         return consultationService.loadConsults(userId)

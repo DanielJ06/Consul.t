@@ -1,7 +1,7 @@
-package com.ioasys.diversidade.data.remote.repositoryImpl
+package com.ioasys.diversidade.dataRemote.dataSource
 
-import com.ioasys.diversidade.data.remote.repository.AuthRepository
-import com.ioasys.diversidade.data.remote.services.AuthService
+import com.ioasys.diversidade.data.remote.dataSource.AuthDataSource
+import com.ioasys.diversidade.dataRemote.services.AuthService
 import com.ioasys.diversidade.domain.models.RegisterCredentials
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserCredentials
@@ -9,9 +9,9 @@ import com.ioasys.diversidade.domain.models.UserData
 import retrofit2.Response
 import javax.inject.Inject
 
-class AuthRepositoryImpl @Inject constructor(
+class AuthDataSourceImpl @Inject constructor(
     private val authService: AuthService
-): AuthRepository {
+): AuthDataSource {
 
     override suspend fun signIn(email: String, password: String): Response<User> {
         return authService.signIn(UserCredentials(email, password))

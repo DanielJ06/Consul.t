@@ -2,6 +2,7 @@ package com.ioasys.diversidade.presentation.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -74,8 +75,7 @@ class LoginFragment : Fragment() {
         authViewModel.userData.observe(viewLifecycleOwner, {res ->
             when (res) {
                 is ViewState.Success -> {
-                    binding.loadingProgressBar.visibility = View.INVISIBLE
-                    binding.loadingEffect.visibility = View.INVISIBLE
+                    hideLoading()
                     binding.loginEmailInputLayout.error = null
                     binding.loginPasswordInputLayout.error = null
 
@@ -97,12 +97,10 @@ class LoginFragment : Fragment() {
                     authViewModel.userData.postValue(null)
                 }
                 is ViewState.Loading -> {
-                    binding.loadingProgressBar.visibility = View.VISIBLE
-                    binding.loadingEffect.visibility = View.VISIBLE
+                    showLoading()
                 }
                 is ViewState.Error -> {
-                    binding.loadingProgressBar.visibility = View.INVISIBLE
-                    binding.loadingEffect.visibility = View.INVISIBLE
+                    hideLoading()
                     binding.loginEmailInputLayout.error = "*E-mail ou senha incorretos, tente novamente"
                     binding.loginPasswordInputLayout.error = "*E-mail ou senha incorretos, tente novamente"
                 }
@@ -117,6 +115,16 @@ class LoginFragment : Fragment() {
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
         imm.hideSoftInputFromWindow(view?.windowToken, 0)
+    }
+
+    private fun hideLoading() {
+        binding.loadingProgressBar.visibility = View.INVISIBLE
+        binding.loadingEffect.visibility = View.INVISIBLE
+    }
+
+    private fun showLoading() {
+        binding.loadingProgressBar.visibility = View.VISIBLE
+        binding.loadingEffect.visibility = View.VISIBLE
     }
 
     private fun setupInputs() {

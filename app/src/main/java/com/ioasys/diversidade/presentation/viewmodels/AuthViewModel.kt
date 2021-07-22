@@ -8,6 +8,7 @@ import com.ioasys.diversidade.data.DataStoreRepository
 import com.ioasys.diversidade.domain.repository.AuthRepository
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserData
+import com.ioasys.diversidade.domain.useCases.SignInUseCase
 import com.ioasys.diversidade.utils.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +19,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val dataStoreRepository: DataStoreRepository,
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val signInUseCase: SignInUseCase
 ) : ViewModel() {
 
     // DataStore
@@ -50,12 +52,16 @@ class AuthViewModel @Inject constructor(
     }
 
     fun signIn(email: String, password: String) = viewModelScope.launch {
-        try {
-            val response = authRepository.signIn(email, password)
-            userData.value = handleSignIn(response)
-        } catch (e: Exception) {
-            Log.i("responseError", e.toString())
-        }
+        userData.value = ViewState.Loading()
+        signInUseCase(
+            params = SignInUseCase.Params(email, password),
+            onSuccess = {
+                userData.value = ViewState.Success(it)
+            },
+            onError = {
+                userData.value = ViewState.Error(it.toString())
+            }
+        )
     }
 
     fun signUp(
@@ -107,21 +113,21 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun handleSignIn(response: Response<User>): ViewState<User> {
-        userData.value = ViewState.Loading()
-        return when {
-            response.isSuccessful -> {
-                val data = response.body()
-                ViewState.Success(data!!)
-            }
-            response.code() == 401 -> {
-                ViewState.Error("Invalid login credentials. Please try again.")
-            }
-            else -> {
-                Log.i("userDebug", response.toString())
-                ViewState.Error("Something went wrong.")
-            }
-        }
-    }
+//    private fun handleSignIn(response: User): ViewState<User> {
+//        userData.value = ViewState.Loading()
+//        return when {
+//            response.isSuccessful -> {
+//                val data = response.body()
+//                ViewState.Success(data!!)
+//            }
+//            response.code() == 401 -> {
+//                ViewState.Error("Invalid login credentials. Please try again.")
+//            }
+//            else -> {
+//                Log.i("userDebug", response.toString())
+//                ViewState.Error("Something went wrong.")
+//            }
+//        }
+//    }
 
 }

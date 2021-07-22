@@ -4,6 +4,7 @@ import com.ioasys.diversidade.data.remote.dataSource.AuthDataSource
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserData
 import com.ioasys.diversidade.domain.repository.AuthRepository
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -11,7 +12,7 @@ class AuthRepositoryImpl @Inject constructor(
     private val authDataSource: AuthDataSource
 ) : AuthRepository {
 
-    override suspend fun signIn(email: String, password: String): Response<User> {
+    override suspend fun signIn(email: String, password: String): Flow<User> {
         return authDataSource.signIn(email, password)
     }
 

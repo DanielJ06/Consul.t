@@ -9,6 +9,7 @@ import com.ioasys.diversidade.domain.repository.AuthRepository
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserData
 import com.ioasys.diversidade.domain.useCases.SignInUseCase
+import com.ioasys.diversidade.domain.useCases.SignUpUseCase
 import com.ioasys.diversidade.utils.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +21,8 @@ import javax.inject.Inject
 class AuthViewModel @Inject constructor(
     private val dataStoreRepository: DataStoreRepository,
     private val authRepository: AuthRepository,
-    private val signInUseCase: SignInUseCase
+    private val signInUseCase: SignInUseCase,
+    private val signUpUseCase: SignUpUseCase
 ) : ViewModel() {
 
     // DataStore
@@ -71,12 +73,15 @@ class AuthViewModel @Inject constructor(
         lastName: String,
         telephone: String
     ) = viewModelScope.launch {
-        try {
-            val response = authRepository.signUp(email, password, firstName, lastName, telephone)
-            registerData.value = handleSignUp(response)
-        } catch (e: Exception) {
-            Log.i("responseError", e.toString())
-        }
+        signUpUseCase(
+            params = SignUpUseCase.Params(email, password, firstName, lastName, telephone),
+            onSuccess = {
+                registerData.value = ViewState.Success(it)
+            },
+            onError = {
+              registerData.value = ViewState.Error(it.toString())
+            }
+        )
     }
 
     private fun handleAccount(response: Response<UserData>): ViewState<UserData> {
@@ -96,22 +101,22 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun handleSignUp(response: Response<User>): ViewState<User> {
-        userData.value = ViewState.Loading()
-        return when {
-            response.isSuccessful -> {
-                val data = response.body()
-                ViewState.Success(data!!)
-            }
-            response.code() == 409 -> {
-                ViewState.Error("Email já registrado")
-            }
-            else -> {
-                Log.i("userDebug", response.toString())
-                ViewState.Error("Something went wrong.")
-            }
-        }
-    }
+//    private fun handleSignUp(response: Response<User>): ViewState<User> {
+//        userData.value = ViewState.Loading()
+//        return when {
+//            response.isSuccessful -> {
+//                val data = response.body()
+//                ViewState.Success(data!!)
+//            }
+//            response.code() == 409 -> {
+//                ViewState.Error("Email já registrado")
+//            }
+//            else -> {
+//                Log.i("userDebug", response.toString())
+//                ViewState.Error("Something went wrong.")
+//            }
+//        }
+//    }
 
 //    private fun handleSignIn(response: User): ViewState<User> {
 //        userData.value = ViewState.Loading()

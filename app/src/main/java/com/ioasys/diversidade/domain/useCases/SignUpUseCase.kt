@@ -3,31 +3,35 @@ package com.ioasys.diversidade.domain.useCases
 import com.ioasys.diversidade.domain.base.UseCase
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.repository.AuthRepository
-import kotlinx.coroutines.flow.Flow
-import java.lang.Exception
 import javax.inject.Inject
 
-class SignInUseCase @Inject constructor(
+class SignUpUseCase @Inject constructor(
     private val authRepository: AuthRepository
-) : UseCase<User, SignInUseCase.Params>() {
+) : UseCase<User, SignUpUseCase.Params>() {
+
+    data class Params(
+        val email: String,
+        val password: String,
+        val firstName: String,
+        val lastName: String,
+        val telephone: String
+    )
 
     override suspend fun execute(params: Params?) = when(params) {
         null -> throw Exception("Null params")
         else -> try {
-             params.let {
-                 authRepository.signIn(
+            params.let {
+                authRepository.signUp(
                     email = params.email,
-                    password = params.password
+                    password = params.password,
+                    firstName = params.firstName,
+                    lastName = params.lastName,
+                    telephone = params.telephone
                 )
             }
         } catch (e: Exception) {
             throw Exception(e)
         }
     }
-
-    data class Params(
-        val email: String,
-        val password: String
-    )
 
 }

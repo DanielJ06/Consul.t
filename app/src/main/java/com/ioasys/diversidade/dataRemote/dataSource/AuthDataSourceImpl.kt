@@ -1,10 +1,9 @@
 package com.ioasys.diversidade.dataRemote.dataSource
 
 import com.ioasys.diversidade.data.remote.dataSource.AuthDataSource
-import com.ioasys.diversidade.dataRemote.mapper.auth.SignInMapper
+import com.ioasys.diversidade.dataRemote.mapper.auth.UserMapper
 import com.ioasys.diversidade.dataRemote.services.AuthService
 import com.ioasys.diversidade.domain.models.RegisterCredentials
-import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserCredentials
 import com.ioasys.diversidade.domain.models.UserData
 import kotlinx.coroutines.flow.flow
@@ -13,11 +12,11 @@ import javax.inject.Inject
 
 class AuthDataSourceImpl @Inject constructor(
     private val authService: AuthService
-): AuthDataSource {
+) : AuthDataSource {
 
     override suspend fun signIn(email: String, password: String) = flow {
         emit(
-            SignInMapper.toData(
+            UserMapper.toData(
                 authService.signIn(UserCredentials(email, password))
             )
         )
@@ -29,14 +28,19 @@ class AuthDataSourceImpl @Inject constructor(
         firstName: String,
         lastName: String,
         telephone: String
-    ): Response<User> {
-        return authService.signUp(
-            RegisterCredentials(
-                email = email,
-                password = password,
-                firstName = firstName,
-                lastName = lastName,
-                telephone = telephone)
+    ) = flow {
+        emit(
+            UserMapper.toData(
+                authService.signUp(
+                    RegisterCredentials(
+                        email = email,
+                        password = password,
+                        firstName = firstName,
+                        lastName = lastName,
+                        telephone = telephone
+                    )
+                )
+            )
         )
     }
 

@@ -4,7 +4,7 @@ import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserData
 import retrofit2.Response
 
-object SignInMapper {
+object UserMapper {
 
     fun toData(res: Response<User>) = User(
         token = res.body()!!.token,

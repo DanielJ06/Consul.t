@@ -22,7 +22,7 @@ class AuthRepositoryImpl @Inject constructor(
         firstName: String,
         lastName: String,
         telephone: String
-    ): Response<User> {
+    ): Flow<User> {
         return authDataSource.signUp(
             email = email,
             password = password,

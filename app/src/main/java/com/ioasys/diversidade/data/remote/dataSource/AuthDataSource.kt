@@ -15,7 +15,7 @@ interface AuthDataSource {
         firstName: String,
         lastName: String,
         telephone: String
-    ): Response<User>
+    ): Flow<User>
 
     suspend fun getAccountDetails(userId: String): Response<UserData>
 

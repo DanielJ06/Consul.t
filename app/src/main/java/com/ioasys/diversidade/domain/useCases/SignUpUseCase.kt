@@ -1,6 +1,7 @@
 package com.ioasys.diversidade.domain.useCases
 
 import com.ioasys.diversidade.domain.base.UseCase
+import com.ioasys.diversidade.domain.exceptions.MissingParamsException
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.repository.AuthRepository
 import javax.inject.Inject
@@ -18,7 +19,7 @@ class SignUpUseCase @Inject constructor(
     )
 
     override suspend fun execute(params: Params?) = when(params) {
-        null -> throw Exception("Null params")
+        null -> throw MissingParamsException()
         else -> try {
             params.let {
                 authRepository.signUp(

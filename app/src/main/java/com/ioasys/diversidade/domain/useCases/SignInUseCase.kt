@@ -21,7 +21,7 @@ class SignInUseCase @Inject constructor(
                 )
             }
         } catch (e: Exception) {
-            throw Exception(e)
+            throw e
         }
     }
 

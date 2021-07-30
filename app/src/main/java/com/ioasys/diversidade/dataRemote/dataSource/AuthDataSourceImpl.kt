@@ -3,6 +3,7 @@ package com.ioasys.diversidade.dataRemote.dataSource
 import com.ioasys.diversidade.data.remote.dataSource.AuthDataSource
 import com.ioasys.diversidade.dataRemote.mapper.auth.UserMapper
 import com.ioasys.diversidade.dataRemote.services.AuthService
+import com.ioasys.diversidade.dataRemote.utils.requestWrapper
 import com.ioasys.diversidade.domain.models.RegisterCredentials
 import com.ioasys.diversidade.domain.models.UserCredentials
 import com.ioasys.diversidade.domain.models.UserData
@@ -16,8 +17,10 @@ class AuthDataSourceImpl @Inject constructor(
 
     override suspend fun signIn(email: String, password: String) = flow {
         emit(
-            UserMapper.toData(
-                authService.signIn(UserCredentials(email, password))
+            UserMapper.toData (
+                requestWrapper {
+                    authService.signIn(UserCredentials(email, password))
+                }
             )
         )
     }

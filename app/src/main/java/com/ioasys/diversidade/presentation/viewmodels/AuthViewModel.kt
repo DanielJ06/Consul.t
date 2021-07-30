@@ -61,6 +61,7 @@ class AuthViewModel @Inject constructor(
                 userData.value = ViewState.Success(it)
             },
             onError = {
+                Log.i("TESTE", it.toString())
                 userData.value = ViewState.Error(it.toString())
             }
         )

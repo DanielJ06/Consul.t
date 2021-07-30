@@ -17,7 +17,7 @@ class AuthDataSourceImpl @Inject constructor(
 
     override suspend fun signIn(email: String, password: String) = flow {
         emit(
-            UserMapper.toData (
+            UserMapper.toData(
                 requestWrapper {
                     authService.signIn(UserCredentials(email, password))
                 }

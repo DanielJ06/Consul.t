@@ -4,6 +4,8 @@ import com.ioasys.diversidade.dataRemote.utils.constants.ErrorMessageEnum.GENERI
 import com.ioasys.diversidade.dataRemote.utils.constants.ErrorMessageEnum.INVALID_CREDENTIALS_ERROR
 import com.ioasys.diversidade.dataRemote.utils.constants.INVALID_CREDENTIALS_CODE
 import com.ioasys.diversidade.dataRemote.utils.constants.InvalidCredentialsException
+import com.ioasys.diversidade.dataRemote.utils.constants.USER_NOT_FOUND_CODE
+import com.ioasys.diversidade.dataRemote.utils.constants.UserNotFoundException
 import retrofit2.HttpException
 import retrofit2.Response
 
@@ -28,9 +30,10 @@ suspend fun <T> requestWrapper(
 private fun handleByCode(code: Int): Exception {
     return when (code) {
         INVALID_CREDENTIALS_CODE -> {
-            InvalidCredentialsException(
-                message = INVALID_CREDENTIALS_ERROR.value,
-            )
+            InvalidCredentialsException()
+        }
+        USER_NOT_FOUND_CODE -> {
+            UserNotFoundException()
         }
         else -> {
             Exception(GENERIC_ERROR.value)

@@ -34,15 +34,17 @@ class AuthDataSourceImpl @Inject constructor(
     ) = flow {
         emit(
             UserMapper.toData(
-                authService.signUp(
-                    RegisterCredentials(
-                        email = email,
-                        password = password,
-                        firstName = firstName,
-                        lastName = lastName,
-                        telephone = telephone
+                requestWrapper {
+                    authService.signUp(
+                        RegisterCredentials(
+                            email = email,
+                            password = password,
+                            firstName = firstName,
+                            lastName = lastName,
+                            telephone = telephone
+                        )
                     )
-                )
+                }
             )
         )
     }

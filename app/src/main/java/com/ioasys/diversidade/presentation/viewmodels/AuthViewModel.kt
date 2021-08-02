@@ -61,8 +61,7 @@ class AuthViewModel @Inject constructor(
                 userData.value = ViewState.Success(it)
             },
             onError = {
-                Log.i("TESTE", it.toString())
-                userData.value = ViewState.Error(it.toString())
+                userData.value = ViewState.Error(it.message.toString())
             }
         )
     }
@@ -80,7 +79,7 @@ class AuthViewModel @Inject constructor(
                 registerData.value = ViewState.Success(it)
             },
             onError = {
-                registerData.value = ViewState.Error(it.toString())
+                registerData.value = ViewState.Error(it.message.toString())
             }
         )
     }

@@ -21,4 +21,5 @@
     <string name="confirmed">confirmado</string>
     <string name="name">Nome:</string>
     <string name="phone">Telefone</string>
+    <string name="ocorreu_um_erro">Ocorreu um erro</string>
 </resources>

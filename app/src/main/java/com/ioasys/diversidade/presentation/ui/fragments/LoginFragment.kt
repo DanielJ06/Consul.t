@@ -101,6 +101,8 @@ class LoginFragment : Fragment() {
                 }
                 is ViewState.Error -> {
                     hideLoading()
+                    binding.errorCard.visibility = View.VISIBLE
+                    binding.errorMessage.text = res.message
                     binding.loginEmailInputLayout.error = "*E-mail ou senha incorretos, tente novamente"
                     binding.loginPasswordInputLayout.error = "*E-mail ou senha incorretos, tente novamente"
                 }

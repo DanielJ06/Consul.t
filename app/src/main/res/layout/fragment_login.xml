@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <ScrollView
             android:id="@+id/scrollView2"
@@ -49,16 +51,61 @@
                     app:layout_constraintStart_toStartOf="@+id/register_logo"
                     app:layout_constraintTop_toBottomOf="@+id/register_logo" />
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/error_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/red"
+                    android:visibility="gone"
+                    app:cardCornerRadius="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/login_register_text">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/error_ic"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_info" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/error_message"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="@string/ocorreu_um_erro"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/error_ic"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/error_ic"
+                            app:layout_constraintTop_toTopOf="@id/error_ic" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/login_email_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="40dp"
                     android:text="@string/email"
                     android:textColor="@color/charcoal"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/login_register_text" />
+                    app:layout_constraintTop_toBottomOf="@+id/error_card" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_email_inputLayout"

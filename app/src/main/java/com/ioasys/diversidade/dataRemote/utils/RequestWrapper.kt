@@ -1,11 +1,8 @@
 package com.ioasys.diversidade.dataRemote.utils
 
+import com.ioasys.diversidade.dataRemote.utils.constants.*
 import com.ioasys.diversidade.dataRemote.utils.constants.ErrorMessageEnum.GENERIC_ERROR
 import com.ioasys.diversidade.dataRemote.utils.constants.ErrorMessageEnum.INVALID_CREDENTIALS_ERROR
-import com.ioasys.diversidade.dataRemote.utils.constants.INVALID_CREDENTIALS_CODE
-import com.ioasys.diversidade.dataRemote.utils.constants.InvalidCredentialsException
-import com.ioasys.diversidade.dataRemote.utils.constants.USER_NOT_FOUND_CODE
-import com.ioasys.diversidade.dataRemote.utils.constants.UserNotFoundException
 import retrofit2.HttpException
 import retrofit2.Response
 
@@ -34,6 +31,9 @@ private fun handleByCode(code: Int): Exception {
         }
         USER_NOT_FOUND_CODE -> {
             UserNotFoundException()
+        }
+        EMAIL_ALREADY_REGISTERED_CODE -> {
+            EmailRegisteredException()
         }
         else -> {
             Exception(GENERIC_ERROR.value)

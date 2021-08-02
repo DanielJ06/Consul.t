@@ -102,38 +102,4 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-//    private fun handleSignUp(response: Response<User>): ViewState<User> {
-//        userData.value = ViewState.Loading()
-//        return when {
-//            response.isSuccessful -> {
-//                val data = response.body()
-//                ViewState.Success(data!!)
-//            }
-//            response.code() == 409 -> {
-//                ViewState.Error("Email já registrado")
-//            }
-//            else -> {
-//                Log.i("userDebug", response.toString())
-//                ViewState.Error("Something went wrong.")
-//            }
-//        }
-//    }
-
-//    private fun handleSignIn(response: User): ViewState<User> {
-//        userData.value = ViewState.Loading()
-//        return when {
-//            response.isSuccessful -> {
-//                val data = response.body()
-//                ViewState.Success(data!!)
-//            }
-//            response.code() == 401 -> {
-//                ViewState.Error("Invalid login credentials. Please try again.")
-//            }
-//            else -> {
-//                Log.i("userDebug", response.toString())
-//                ViewState.Error("Something went wrong.")
-//            }
-//        }
-//    }
-
 }

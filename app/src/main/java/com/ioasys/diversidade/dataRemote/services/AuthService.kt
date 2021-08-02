@@ -1,5 +1,6 @@
 package com.ioasys.diversidade.dataRemote.services
 
+import com.ioasys.diversidade.dataRemote.ResponseModels.UserResponse
 import com.ioasys.diversidade.domain.models.RegisterCredentials
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserCredentials
@@ -15,12 +16,12 @@ interface AuthService {
     @POST("auth/signin")
     suspend fun signIn(
         @Body userCredentials: UserCredentials
-    ): Response<User>
+    ): Response<UserResponse>
 
     @POST("auth/signup")
     suspend fun signUp(
         @Body credentials: RegisterCredentials
-    ): Response<User>
+    ): Response<UserResponse>
 
     @GET("users/{id}")
     suspend fun getAccountDetails(

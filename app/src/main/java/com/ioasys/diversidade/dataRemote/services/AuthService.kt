@@ -16,12 +16,12 @@ interface AuthService {
     @POST("auth/signin")
     suspend fun signIn(
         @Body userCredentials: UserCredentials
-    ): Response<UserResponse>
+    ): UserResponse
 
     @POST("auth/signup")
     suspend fun signUp(
         @Body credentials: RegisterCredentials
-    ): Response<UserResponse>
+    ): UserResponse
 
     @GET("users/{id}")
     suspend fun getAccountDetails(

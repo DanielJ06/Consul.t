@@ -1,23 +1,33 @@
 package com.ioasys.diversidade.dataRemote.mapper.auth
 
 import com.ioasys.diversidade.dataRemote.ResponseModels.UserResponse
+import com.ioasys.diversidade.dataRemote.ResponseModels.UserResponseData
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserData
-import retrofit2.Response
 
-object UserMapper {
 
-    fun toData(res: Response<UserResponse>) = User(
-        token = res.body()!!.token,
-        user = UserData(
-            id = res.body()!!.user.id,
-            firstName = res.body()!!.user.firstName,
-            lastName = res.body()!!.user.lastName,
-            email = res.body()!!.user.email,
-            telephone = res.body()!!.user.telephone,
-            isAdmin = res.body()!!.user.isAdmin,
-            isDeleted = res.body()!!.user.isDeleted,
-        )
+fun UserResponse.toData() = User(
+    token = token,
+    user = UserData(
+        id = user.id,
+        firstName = user.firstName,
+        lastName = user.lastName,
+        email = user.email,
+        telephone = user.telephone,
+        isAdmin = user.isAdmin,
+        isDeleted = user.isDeleted,
     )
+)
 
-}
+fun UserResponse.toRequest() = UserResponse(
+    token = token,
+    user = UserResponseData(
+        id = user.id,
+        firstName = user.firstName,
+        lastName = user.lastName,
+        email = user.email,
+        telephone = user.telephone,
+        isAdmin = user.isAdmin,
+        isDeleted = user.isDeleted
+    )
+)

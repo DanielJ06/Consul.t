@@ -7,21 +7,12 @@ import retrofit2.HttpException
 import retrofit2.Response
 
 suspend fun <T> requestWrapper(
-    call: suspend () -> Response<T>
-): Response<T> =
+    call: suspend () -> T
+): T =
     try {
-        call().also { res ->
-            when {
-                res.isSuccessful -> {
-                    res.body()
-                }
-                else -> {
-                    throw handleByCode(res.code())
-                }
-            }
-        }
+        call()
     } catch (httpException: HttpException) {
-        throw httpException
+        throw handleByCode(httpException.code())
     }
 
 private fun handleByCode(code: Int): Exception {

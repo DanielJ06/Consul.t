@@ -1,6 +1,7 @@
 package com.ioasys.diversidade.presentation.viewmodels
 
 import android.util.Log
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfessionalViewModel @Inject constructor(
     private val professionalRepository: ProfessionalRepository
-): ViewModel() {
+): ViewModel(), LifecycleObserver {
 
     val professionals: MutableLiveData<ViewState<ProfessionalsList>> = MutableLiveData()
 

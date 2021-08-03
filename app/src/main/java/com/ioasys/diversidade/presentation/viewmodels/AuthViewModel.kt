@@ -1,6 +1,7 @@
 package com.ioasys.diversidade.presentation.viewmodels
 
 import android.util.Log
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -23,7 +24,7 @@ class AuthViewModel @Inject constructor(
     private val authRepository: AuthRepository,
     private val signInUseCase: SignInUseCase,
     private val signUpUseCase: SignUpUseCase
-) : ViewModel() {
+) : ViewModel(), LifecycleObserver {
 
     // DataStore
     val readUserInfo = dataStoreRepository.readUserInfo

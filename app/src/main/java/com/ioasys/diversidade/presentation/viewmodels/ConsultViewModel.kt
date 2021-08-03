@@ -1,6 +1,7 @@
 package com.ioasys.diversidade.presentation.viewmodels
 
 import android.util.Log
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ConsultViewModel @Inject constructor(
     val consultationRepository: ConsultationRepository
-): ViewModel() {
+): ViewModel(), LifecycleObserver {
 
     val consults: MutableLiveData<ViewState<ConsultsList>> = MutableLiveData()
     val requestStatus: MutableLiveData<ViewState<Any>> = MutableLiveData()

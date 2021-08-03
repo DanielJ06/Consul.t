@@ -32,7 +32,7 @@ class AuthRepositoryImpl @Inject constructor(
         )
     }
 
-    override suspend fun getAccountDetails(userId: String): Response<UserData> {
+    override suspend fun getAccountDetails(userId: String): Flow<UserData> {
         return authDataSource.getAccountDetails(userId)
     }
 }

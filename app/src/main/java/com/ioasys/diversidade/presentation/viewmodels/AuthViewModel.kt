@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.ioasys.diversidade.data.DataStoreRepository
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserData
-import com.ioasys.diversidade.domain.repository.AuthRepository
+import com.ioasys.diversidade.domain.useCases.GetAccountUseCase
 import com.ioasys.diversidade.domain.useCases.SignInUseCase
 import com.ioasys.diversidade.domain.useCases.SignUpUseCase
 import com.ioasys.diversidade.utils.ViewState
@@ -21,9 +21,9 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val dataStoreRepository: DataStoreRepository,
-    private val authRepository: AuthRepository,
     private val signInUseCase: SignInUseCase,
-    private val signUpUseCase: SignUpUseCase
+    private val signUpUseCase: SignUpUseCase,
+    private val getAccountUseCase: GetAccountUseCase
 ) : ViewModel(), LifecycleObserver {
 
     // DataStore
@@ -45,13 +45,13 @@ class AuthViewModel @Inject constructor(
     val profile: MutableLiveData<ViewState<UserData>> = MutableLiveData()
 
     fun getDetailsAccount(userId: String) = viewModelScope.launch {
-        try {
-            val response = authRepository.getAccountDetails(userId)
-            Log.i("DEBUG", response.body().toString())
-            profile.value = handleAccount(response)
-        } catch (e: Exception) {
-            Log.i("responseError", e.toString())
-        }
+        profile.value = ViewState.Loading()
+        getAccountUseCase(
+            params = GetAccountUseCase.Params(userId),
+            onSuccess = {
+                profile.value = ViewState.Success(it)
+            }
+        )
     }
 
     fun signIn(email: String, password: String) = viewModelScope.launch {

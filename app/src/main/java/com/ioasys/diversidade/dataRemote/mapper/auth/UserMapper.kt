@@ -31,3 +31,13 @@ fun UserResponse.toRequest() = UserResponse(
         isDeleted = user.isDeleted
     )
 )
+
+fun UserResponseData.toData() = UserData(
+    id = id,
+    firstName = firstName,
+    lastName = lastName,
+    email = email,
+    telephone = telephone,
+    isAdmin = isAdmin,
+    isDeleted = isDeleted
+)

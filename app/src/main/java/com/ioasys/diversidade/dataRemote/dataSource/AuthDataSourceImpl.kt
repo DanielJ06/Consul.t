@@ -6,9 +6,7 @@ import com.ioasys.diversidade.dataRemote.services.AuthService
 import com.ioasys.diversidade.dataRemote.utils.requestWrapper
 import com.ioasys.diversidade.domain.models.RegisterCredentials
 import com.ioasys.diversidade.domain.models.UserCredentials
-import com.ioasys.diversidade.domain.models.UserData
 import kotlinx.coroutines.flow.flow
-import retrofit2.Response
 import javax.inject.Inject
 
 class AuthDataSourceImpl @Inject constructor(
@@ -45,7 +43,11 @@ class AuthDataSourceImpl @Inject constructor(
         )
     }
 
-    override suspend fun getAccountDetails(userId: String): Response<UserData> {
-        return authService.getAccountDetails(userId)
+    override suspend fun getAccountDetails(userId: String) = flow {
+        emit(
+            requestWrapper {
+                authService.getAccountDetails(userId).toData()
+            }
+        )
     }
 }

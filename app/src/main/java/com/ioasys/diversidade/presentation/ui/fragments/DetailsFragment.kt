@@ -79,7 +79,7 @@ class DetailsFragment : Fragment() {
         }
 
         binding.submitButton.setOnClickListener {
-            requestConsult(userId, args.professionalId!!, "Problems")
+            args.professionalId?.let { it1 -> requestConsult(userId, it1, "Problems") }
         }
 
         consultViewModel.requestStatus.observe(viewLifecycleOwner, {res ->

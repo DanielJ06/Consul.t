@@ -89,7 +89,9 @@ class LoginFragment : Fragment() {
                         putString(ACCESS_TOKEN, token)
                     }
 
-                    authViewModel.saveUserInfo(id!!, name!!, token!!)
+                    if (id != null && name != null && token != null) {
+                        authViewModel.saveUserInfo(id, name, token)
+                    }
 
                     val action = LoginFragmentDirections.actionLoginFragmentToMyNav(id, name, token)
                     findNavController().navigate(action)

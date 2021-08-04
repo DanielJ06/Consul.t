@@ -45,7 +45,9 @@ class SuccessAuthFragment: Fragment() {
                     val name = res.data?.user?.firstName
                     val token = res.data?.token
 
-                    authViewModel.saveUserInfo(id!!, name!!, token!!)
+                    if (id != null && name != null && token != null) {
+                        authViewModel.saveUserInfo(id, name, token)
+                    }
 
                     val action = SuccessAuthFragmentDirections.actionSuccessAuthFragmentToMyNav(id, name, token)
                     findNavController().navigate(action)

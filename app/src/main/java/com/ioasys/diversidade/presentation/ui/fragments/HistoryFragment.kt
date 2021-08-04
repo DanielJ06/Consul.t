@@ -40,7 +40,7 @@ class HistoryFragment: Fragment() {
 
         setupRecycler()
 
-        consultViewModel.loadConsults(args.userId!!)
+        args.userId?.let { consultViewModel.loadConsults(it) }
         consultViewModel.consults.observe(viewLifecycleOwner, {res ->
             when (res) {
                 is ViewState.Success -> {

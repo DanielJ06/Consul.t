@@ -1,0 +1,3 @@
+package com.ioasys.diversidade.domain.useCases.professionals
+
+class LoadProfessionalsUseCase

@@ -1,17 +1,31 @@
 package com.ioasys.diversidade
 
+import com.ioasys.diversidade.domain.repository.ProfessionalRepository
+import com.ioasys.diversidade.utils.ViewState.Success
+import com.ioasys.diversidade.presentation.viewmodels.ProfessionalViewModel
+import io.mockk.mockk
+import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 
-import org.junit.Assert.*
-
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 class ExampleUnitTest {
+
+    private lateinit var viewModel: ProfessionalViewModel
+
+    private val professionalRepository: ProfessionalRepository = mockk()
+
+    @Before
+    fun setUp() {
+        viewModel = ProfessionalViewModel(professionalRepository)
+    }
+
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun `Should return MissingParamsException if no params was provided`() {
+
+        viewModel.loadProfessionals()
+
+        val any: Any = Unit
+
+        assertEquals(Success(any), viewModel.professionals.value)
     }
 }

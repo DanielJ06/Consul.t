@@ -1,21 +1,19 @@
 package com.ioasys.diversidade.presentation.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ioasys.diversidade.data.DataStoreRepository
 import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.models.UserData
-import com.ioasys.diversidade.domain.useCases.GetAccountUseCase
-import com.ioasys.diversidade.domain.useCases.SignInUseCase
-import com.ioasys.diversidade.domain.useCases.SignUpUseCase
+import com.ioasys.diversidade.domain.repository.DataStoreRepository
+import com.ioasys.diversidade.domain.useCases.auth.GetAccountUseCase
+import com.ioasys.diversidade.domain.useCases.auth.SignInUseCase
+import com.ioasys.diversidade.domain.useCases.auth.SignUpUseCase
 import com.ioasys.diversidade.utils.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
@@ -83,23 +81,6 @@ class AuthViewModel @Inject constructor(
                 registerData.value = ViewState.Error(it.message.toString())
             }
         )
-    }
-
-    private fun handleAccount(response: Response<UserData>): ViewState<UserData> {
-        profile.value = ViewState.Loading()
-        return when {
-            response.isSuccessful -> {
-                val data = response.body()
-                ViewState.Success(data!!)
-            }
-            response.code() == 401 -> {
-                ViewState.Error("Ocorreu um erro")
-            }
-            else -> {
-                Log.i("userDebug", response.toString())
-                ViewState.Error("Something went wrong.")
-            }
-        }
     }
 
 }

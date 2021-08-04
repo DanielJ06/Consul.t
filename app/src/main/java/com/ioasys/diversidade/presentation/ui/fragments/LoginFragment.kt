@@ -2,23 +2,22 @@ package com.ioasys.diversidade.presentation.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.content.edit
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.ioasys.diversidade.databinding.FragmentLoginBinding
 import com.ioasys.diversidade.domain.models.DataStoreUser
+import com.ioasys.diversidade.presentation.viewmodels.AuthViewModel
 import com.ioasys.diversidade.utils.Constants.Companion.ACCESS_TOKEN
 import com.ioasys.diversidade.utils.Constants.Companion.SHARED_PREFERENCE
 import com.ioasys.diversidade.utils.ViewState
-import com.ioasys.diversidade.presentation.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,7 +36,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
@@ -66,7 +65,7 @@ class LoginFragment : Fragment() {
             } else {
                 binding.loadingProgressBar.visibility = View.VISIBLE
                 binding.loadingEffect.visibility = View.VISIBLE
-                submit(emailContent!!, passwdContent!!)
+                submit(emailContent, passwdContent)
             }
         }
 
@@ -130,12 +129,12 @@ class LoginFragment : Fragment() {
     }
 
     private fun setupInputs() {
-        binding.loginEmailEditText.setOnFocusChangeListener { v, hasFocus ->
+        binding.loginEmailEditText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 binding.loginEmailInputLayout.error = null
             }
         }
-        binding.loginPasswordEditText.setOnFocusChangeListener { v, hasFocus ->
+        binding.loginPasswordEditText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 binding.loginPasswordInputLayout.error = null
             }

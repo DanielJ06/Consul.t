@@ -34,7 +34,7 @@ class ProfessionalFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentProfessionalsBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
@@ -70,7 +70,7 @@ class ProfessionalFragment: Fragment() {
     }
 
     private fun setupRecycler() {
-        binding.professionalRv.adapter = mAdapter;
+        binding.professionalRv.adapter = mAdapter
         binding.professionalRv.layoutManager = LinearLayoutManager(requireContext())
     }
 

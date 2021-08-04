@@ -1,4 +1,4 @@
-package com.ioasys.diversidade.domain.useCases
+package com.ioasys.diversidade.domain.useCases.auth
 
 import com.ioasys.diversidade.domain.base.UseCase
 import com.ioasys.diversidade.domain.exceptions.MissingParamsException
@@ -23,11 +23,11 @@ class SignUpUseCase @Inject constructor(
         else -> try {
             params.let {
                 authRepository.signUp(
-                    email = params.email,
-                    password = params.password,
-                    firstName = params.firstName,
-                    lastName = params.lastName,
-                    telephone = params.telephone
+                    email = it.email,
+                    password = it.password,
+                    firstName = it.firstName,
+                    lastName = it.lastName,
+                    telephone = it.telephone
                 )
             }
         } catch (e: Exception) {

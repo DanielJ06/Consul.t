@@ -32,7 +32,7 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
@@ -53,7 +53,7 @@ class ProfileFragment : Fragment() {
             val action = ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment(
                 args.userId
             )
-            findNavController().navigate(action);
+            findNavController().navigate(action)
         }
 
         requestDetails(args.userId.toString())
@@ -75,6 +75,7 @@ class ProfileFragment : Fragment() {
                 is ViewState.Error -> {
                     Log.i("DEBUG", res.message.toString())
                 }
+                else -> {}
             }
         })
     }

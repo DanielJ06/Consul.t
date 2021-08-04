@@ -1,26 +1,32 @@
-package com.ioasys.diversidade.domain.useCases
+package com.ioasys.diversidade.domain.useCases.auth
 
 import com.ioasys.diversidade.domain.base.UseCase
 import com.ioasys.diversidade.domain.exceptions.MissingParamsException
-import com.ioasys.diversidade.domain.models.UserData
+import com.ioasys.diversidade.domain.models.User
 import com.ioasys.diversidade.domain.repository.AuthRepository
 import javax.inject.Inject
 
-class GetAccountUseCase @Inject constructor(
+class SignInUseCase @Inject constructor(
     private val authRepository: AuthRepository
-) : UseCase<UserData, GetAccountUseCase.Params>() {
+) : UseCase<User, SignInUseCase.Params>() {
 
     override suspend fun execute(params: Params?) = when (params) {
         null -> throw MissingParamsException()
         else -> try {
-            authRepository.getAccountDetails(params.id)
+            params.let {
+                authRepository.signIn(
+                    email = it.email,
+                    password = it.password
+                )
+            }
         } catch (e: Exception) {
             throw e
         }
     }
 
     data class Params(
-        val id: String
+        val email: String,
+        val password: String
     )
 
 }

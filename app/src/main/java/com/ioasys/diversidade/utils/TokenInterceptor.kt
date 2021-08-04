@@ -1,8 +1,6 @@
 package com.ioasys.diversidade.utils
 
 import android.content.Context
-import androidx.lifecycle.asLiveData
-import com.ioasys.diversidade.data.DataStoreRepository
 import com.ioasys.diversidade.utils.Constants.Companion.ACCESS_TOKEN
 import com.ioasys.diversidade.utils.Constants.Companion.SHARED_PREFERENCE
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -12,7 +10,7 @@ import javax.inject.Inject
 
 class TokenInterceptor @Inject constructor(
     @ApplicationContext private val context: Context
-): Interceptor {
+) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()
